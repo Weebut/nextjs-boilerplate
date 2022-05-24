@@ -1,7 +1,7 @@
 import { UserProfile } from '@auth0/nextjs-auth0';
+import { ProfileCard } from '@components/cards/profile-card.component';
+import { useAppDispatch, useAppSelector } from '@redux/hooks';
 import Link from 'next/link';
-import { ProfileCard } from '../../components/cards/profile-card.component';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { decrement, increment } from './reducer';
 import { selectHomeValue } from './selectors';
 

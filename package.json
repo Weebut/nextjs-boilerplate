@@ -7,9 +7,11 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run clean && next build",
     "start": "next start",
-    "lint": "next lint"
+    "clean": "rm -rf .next",
+    "lint": "next lint",
+    "deploy": "npm install && npm run build && eb deploy"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^1.7.0",

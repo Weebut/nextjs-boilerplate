@@ -1,15 +1,15 @@
 import { UserProfile, withPageAuthRequired } from '@auth0/nextjs-auth0';
 import Head from 'next/head';
 import React from 'react';
-import { HomeTemplate } from '../templates/home.template';
+import { HomeContainer } from '../containers/home';
 
-export default function Home({ user }: { user: UserProfile }) {
+export default function HomePage({ user }: { user: UserProfile }) {
   return (
     <div>
       <Head>
         <title>Hello Auth0</title>
       </Head>
-      <HomeTemplate user={user} />
+      <HomeContainer user={user} />
     </div>
   );
 }

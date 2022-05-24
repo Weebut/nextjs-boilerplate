@@ -5,7 +5,10 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 const baseUrl = process.env.API_BASE_URL;
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<any>,
+) {
   const token = await getAccessToken(req, res);
 
   const accessToken = token.accessToken;

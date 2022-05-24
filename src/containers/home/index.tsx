@@ -16,14 +16,14 @@ export function HomeContainer({ user }: HomeTemplateProps) {
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center space-y-4">
       <ProfileCard />
-      <div>
+      <div className="font-gmarket">
         {user ? (
           <Link href="/api/auth/logout">Logout</Link>
         ) : (
           <Link href="/api/auth/login">Login</Link>
         )}
       </div>
-      <div className="flex w-64 justify-center space-x-2">
+      <div className="flex w-64 justify-center space-x-2 font-gmarket">
         <div>Value : {value}</div>
         <div
           className="h-6 w-12 cursor-pointer bg-red-600 text-center text-white"

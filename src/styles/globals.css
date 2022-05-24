@@ -1,3 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'Gmarket Sans TTF';
+  font-weight: 400;
+  src: url('/fonts/GmarketSansTTFMedium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Gmarket Sans TTF';
+  font-weight: 500;
+  src: url('/fonts/GmarketSansTTFBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'LEMON MILK';
+  font-weight: 400;
+  src: url('/fonts/LEMONMILK-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'LEMON MILK';
+  font-weight: 400;
+  font-style: italic;
+  src: url('/fonts/LEMONMILK-MediumItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'LEMON MILK';
+  font-weight: 500;
+  src: url('/fonts/LEMONMILK-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'LEMON MILK';
+  font-weight: 500;
+  font-style: italic;
+  src: url('/fonts/LEMONMILK-BoldItalic.ttf') format('truetype');
+}

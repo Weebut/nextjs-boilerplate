@@ -4,7 +4,12 @@ module.exports = {
     './src/containers/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      sans: ['Noto Sans KR'],
+      money: ['Noto Sans'],
+      gmarket: ['Gmarket Sans TTF'],
+      lemon: ['LEMON MILK'],
+    },
   },
   plugins: [],
 };

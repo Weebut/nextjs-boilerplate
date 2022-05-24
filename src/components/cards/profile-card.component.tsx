@@ -10,7 +10,7 @@ export function ProfileCard() {
 
   return (
     (user && (
-      <div className="flex flex-col text-xl">
+      <div className="flex flex-col font-lemon text-xl">
         <div className="h-8 w-8">
           {user.picture && (
             <Image

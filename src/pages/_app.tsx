@@ -1,3 +1,4 @@
+import { Layout } from '@components/layouts/layout.component';
 import store from '@redux/store';
 import '@styles/globals.css';
 import type { AppProps } from 'next/app';
@@ -9,7 +10,9 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
       <CookiesProvider>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </CookiesProvider>
     </Provider>
   );

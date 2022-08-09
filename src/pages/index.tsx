@@ -5,7 +5,7 @@ export default function HomePage() {
   return (
     <div>
       <Head>
-        <title>Hello Auth0</title>
+        <title>Title</title>
       </Head>
       <HomeContainer />
     </div>

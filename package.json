@@ -8,10 +8,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "npm run clean && next build",
+    "build:tailwind": "npx tailwindcss -o build.css --minify",
     "start": "next start",
     "clean": "rm -rf .next",
     "lint": "next lint",
-    "deploy": "npm install && npm run build && eb deploy"
+    "prod": "npm install && npm run build && npm run build:tailwind && npm run start"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",

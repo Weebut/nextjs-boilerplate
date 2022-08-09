@@ -10,6 +10,11 @@ module.exports = {
       gmarket: ['Gmarket Sans TTF'],
       lemon: ['LEMON MILK'],
     },
+    extend: {
+      colors: {
+        primary: '#5c6ac4',
+      },
+    },
   },
   plugins: [],
 };

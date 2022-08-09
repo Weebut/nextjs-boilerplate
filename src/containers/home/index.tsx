@@ -1,3 +1,7 @@
+import {
+  FullWidthStrip,
+  FullWidthStripBackgroundColorEnums,
+} from '@components/strips/full-width-strip.component';
 import { Strip } from '@components/strips/strip.component';
 import { useAppDispatch, useAppSelector } from '@redux/hooks';
 import { decrement, increment } from './reducer';
@@ -16,7 +20,10 @@ export function HomeContainer() {
   }
 
   return (
-    <div>
+    <div className="flex flex-col">
+      <FullWidthStrip bgColor={FullWidthStripBackgroundColorEnums.PRIMARY}>
+        <div className="h-32"></div>
+      </FullWidthStrip>
       <Strip>
         <div className="flex flex-col space-y-2">
           <div>Count : {value}</div>

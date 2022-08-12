@@ -4,12 +4,10 @@ import {
 } from '@components/strips/full-width-strip.component';
 import { Strip } from '@components/strips/strip.component';
 import { useAppDispatch, useAppSelector } from '@redux/hooks';
-import { useSession } from 'next-auth/react';
 import { decrement, increment } from './reducer';
 import { selectHomeValue } from './selectors';
 
 export function HomeContainer() {
-  const { data: session } = useSession();
   const value = useAppSelector(selectHomeValue);
   const dispatch = useAppDispatch();
 
@@ -19,14 +17,6 @@ export function HomeContainer() {
 
   function onDecrease() {
     dispatch(decrement());
-  }
-
-  if (!session) {
-    return (
-      <div className="flex h-full w-full items-center justify-center">
-        로그인이 필요한 서비스입니다!
-      </div>
-    );
   }
 
   return (

@@ -22,10 +22,16 @@ export function HomeContainer() {
   return (
     <div className="flex flex-col">
       <FullWidthStrip bgColor={FullWidthStripBackgroundColorEnums.PRIMARY}>
-        <div className="h-32"></div>
+        <div className="flex flex-col items-center justify-center py-12">
+          <p className="text text-center">
+            <span className="text-xl text-white">Title</span>
+            <br />
+            <span className="text-white">Sub Title</span>
+          </p>
+        </div>
       </FullWidthStrip>
       <Strip>
-        <div className="flex flex-col space-y-2">
+        <div className="flex flex-col space-y-2 py-32">
           <div>Count : {value}</div>
           <div className="flex space-x-2">
             <button
@@ -43,6 +49,9 @@ export function HomeContainer() {
           </div>
         </div>
       </Strip>
+      <FullWidthStrip bgColor={FullWidthStripBackgroundColorEnums.BLACK}>
+        <div className="h-[300px]"></div>
+      </FullWidthStrip>
     </div>
   );
 }

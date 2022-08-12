@@ -1,13 +1,17 @@
+import { Layout } from '@components/layouts/layout.component';
 import {
   FullWidthStrip,
   FullWidthStripBackgroundColorEnums,
 } from '@components/strips/full-width-strip.component';
 import { Strip } from '@components/strips/strip.component';
 import { useAppDispatch, useAppSelector } from '@redux/hooks';
+import { useSession } from 'next-auth/react';
 import { decrement, increment } from './reducer';
 import { selectHomeValue } from './selectors';
 
 export function HomeContainer() {
+  const { data: session } = useSession();
+
   const value = useAppSelector(selectHomeValue);
   const dispatch = useAppDispatch();
 
@@ -20,7 +24,7 @@ export function HomeContainer() {
   }
 
   return (
-    <div className="flex flex-col">
+    <Layout session={session}>
       <FullWidthStrip bgColor={FullWidthStripBackgroundColorEnums.PRIMARY}>
         <div className="flex flex-col items-center justify-center py-12">
           <p className="text text-center">
@@ -52,6 +56,6 @@ export function HomeContainer() {
       <FullWidthStrip bgColor={FullWidthStripBackgroundColorEnums.BLACK}>
         <div className="h-[300px]"></div>
       </FullWidthStrip>
-    </div>
+    </Layout>
   );
 }

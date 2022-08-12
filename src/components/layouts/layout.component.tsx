@@ -1,20 +1,20 @@
 import { Footer } from '@components/footers/footer.component';
 import { NavigationBar } from '@components/navigation-bars/navigation-bar.component';
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { Session } from 'next-auth';
+import { signIn, signOut } from 'next-auth/react';
 import { ReactNode } from 'react';
 
 interface LayoutProps {
   children: ReactNode;
+  session: Session | null;
 }
 
-export function Layout({ children }: LayoutProps) {
-  const { data } = useSession();
-
+export function Layout({ children, session }: LayoutProps) {
   return (
     <div className="flex w-screen flex-col">
       <div className="flex min-h-screen w-full flex-col">
-        <NavigationBar session={data} signIn={signIn} signOut={signOut} />
-        {children}
+        <NavigationBar session={session} signIn={signIn} signOut={signOut} />
+        <div className="flex w-full flex-col">{children}</div>
       </div>
       <Footer />
     </div>

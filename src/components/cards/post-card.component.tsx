@@ -18,7 +18,7 @@ export function PostCard({ card }: PostCardProps) {
   const description = shortenString(card.description, maxDescriptionLength);
 
   return (
-    <div className="relative mr-6 mb-6 h-[150px] w-[300px] rounded border p-4">
+    <div className="relative mr-6 mb-6 h-[150px] w-[300px] rounded border p-4 delay-150 duration-300 ease-out hover:-translate-y-1 hover:scale-105">
       <div className="flex flex-col space-y-2">
         <span>{title}</span>
         <span className="h-[60px] w-full text-sm">{description}</span>

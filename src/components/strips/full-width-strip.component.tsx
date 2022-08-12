@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { Strip } from './strip.component';
 
 interface FullWidthStripProps {
   children: ReactNode;
@@ -22,22 +23,26 @@ export function FullWidthStrip({
   switch (bgColor) {
     case FullWidthStripBackgroundColorEnums.BLACK:
       return (
-        <div className={`flex w-full justify-center bg-black`}>{children}</div>
+        <div className={`w-full bg-black`}>
+          <Strip>{children}</Strip>
+        </div>
       );
     case FullWidthStripBackgroundColorEnums.WHITE:
       return (
-        <div className={`flex w-full justify-center bg-white`}>{children}</div>
+        <div className={`w-full bg-white`}>
+          <Strip>{children}</Strip>
+        </div>
       );
     case FullWidthStripBackgroundColorEnums.PRIMARY:
       return (
-        <div className={`flex w-full justify-center bg-primary`}>
-          {children}
+        <div className={`w-full bg-primary`}>
+          <Strip>{children}</Strip>
         </div>
       );
     default:
       return (
-        <div className={`flex w-full justify-center bg-transparent`}>
-          {children}
+        <div className={`w-full bg-transparent`}>
+          <Strip>{children}</Strip>
         </div>
       );
   }

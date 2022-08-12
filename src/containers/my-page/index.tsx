@@ -1,3 +1,4 @@
+import { PostCard } from '@components/cards/post-card.component';
 import { Layout } from '@components/layouts/layout.component';
 import { Strip } from '@components/strips/strip.component';
 import { useSession } from 'next-auth/react';
@@ -6,6 +7,34 @@ export function MyPageContainer() {
   const { data: session } = useSession();
 
   const user = session?.user;
+
+  // Data queried from external service
+  const cards = [
+    {
+      title: '모든 국민은 능력에 따라 균등하게 교육을 받을 권리를 가진다.',
+      description: `모든 국민은 능력에 따라 균등하게 교육을 받을 권리를 가진다.
+                  헌법개정은 국회재적의원 과반수 또는 대통령의 발의로
+                  제안된다.`,
+    },
+    {
+      title: '모든 국민은 능력에 따라 균등하게 교육을 받을 권리를 가진다.',
+      description: `모든 국민은 능력에 따라 균등하게 교육을 받을 권리를 가진다.
+                  헌법개정은 국회재적의원 과반수 또는 대통령의 발의로
+                  제안된다.`,
+    },
+    {
+      title: '모든 국민은 능력에 따라 균등하게 교육을 받을 권리를 가진다.',
+      description: `모든 국민은 능력에 따라 균등하게 교육을 받을 권리를 가진다.
+                  헌법개정은 국회재적의원 과반수 또는 대통령의 발의로
+                  제안된다.`,
+    },
+    {
+      title: '모든 국민은 능력에 따라 균등하게 교육을 받을 권리를 가진다.',
+      description: `모든 국민은 능력에 따라 균등하게 교육을 받을 권리를 가진다.
+                  헌법개정은 국회재적의원 과반수 또는 대통령의 발의로
+                  제안된다.`,
+    },
+  ];
 
   return (
     <Layout session={session}>
@@ -26,62 +55,9 @@ export function MyPageContainer() {
             </span>
           </div>
           <div className="flex flex-wrap">
-            <div className="relative mr-6 mb-6 h-[150px] w-[300px] rounded border p-4">
-              <div className="flex flex-col space-y-2">
-                <span>모든 국민은</span>
-                <span className="h-[60px] w-full text-sm">
-                  모든 국민은 능력에 따라 균등하게 교육을 받을 권리를 가진다.
-                  헌법개정은 국회재적의원 과반수 또는 대통령의 발의로
-                  제안된다...
-                </span>
-              </div>
-              <button className="text-sm text-primary">더보기</button>
-            </div>
-
-            <div className="relative mr-6 mb-6 h-[150px] w-[300px] rounded border p-4">
-              <div className="flex flex-col space-y-2">
-                <span>모든 국민은</span>
-                <span className="h-[60px] w-full text-sm">
-                  모든 국민은 능력에 따라 균등하게 교육을 받을 권리를 가진다.
-                  헌법개정은 국회재적의원 과반수 또는 대통령의 발의로
-                  제안된다...
-                </span>
-              </div>
-              <button className="text-sm text-primary">더보기</button>
-            </div>
-            <div className="relative mr-6 mb-6 h-[150px] w-[300px] rounded border p-4">
-              <div className="flex flex-col space-y-2">
-                <span>모든 국민은</span>
-                <span className="h-[60px] w-full text-sm">
-                  모든 국민은 능력에 따라 균등하게 교육을 받을 권리를 가진다.
-                  헌법개정은 국회재적의원 과반수 또는 대통령의 발의로
-                  제안된다...
-                </span>
-              </div>
-              <button className="text-sm text-primary">더보기</button>
-            </div>
-            <div className="relative mr-6 mb-6 h-[150px] w-[300px] rounded border p-4">
-              <div className="flex flex-col space-y-2">
-                <span>모든 국민은</span>
-                <span className="h-[60px] w-full text-sm">
-                  모든 국민은 능력에 따라 균등하게 교육을 받을 권리를 가진다.
-                  헌법개정은 국회재적의원 과반수 또는 대통령의 발의로
-                  제안된다...
-                </span>
-              </div>
-              <button className="text-sm text-primary">더보기</button>
-            </div>
-            <div className="relative mr-6 mb-6 h-[150px] w-[300px] rounded border p-4">
-              <div className="flex flex-col space-y-2">
-                <span>모든 국민은</span>
-                <span className="h-[60px] w-full text-sm">
-                  모든 국민은 능력에 따라 균등하게 교육을 받을 권리를 가진다.
-                  헌법개정은 국회재적의원 과반수 또는 대통령의 발의로
-                  제안된다...
-                </span>
-              </div>
-              <button className="text-sm text-primary">더보기</button>
-            </div>
+            {cards.map((card, index) => (
+              <PostCard key={index} card={card} />
+            ))}
           </div>
         </div>
       </Strip>

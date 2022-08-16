@@ -4,6 +4,7 @@ import { SessionProvider } from 'next-auth/react';
 import type { AppProps } from 'next/app';
 import { CookiesProvider } from 'react-cookie';
 import { Provider as ReduxProvider } from 'react-redux';
+import { ThemeProvider } from 'src/providers/theme-provider';
 
 export default function App({
   Component,
@@ -13,7 +14,9 @@ export default function App({
     <SessionProvider>
       <ReduxProvider store={store}>
         <CookiesProvider>
-          <Component {...pageProps} />
+          <ThemeProvider>
+            <Component {...pageProps} />
+          </ThemeProvider>
         </CookiesProvider>
       </ReduxProvider>
     </SessionProvider>

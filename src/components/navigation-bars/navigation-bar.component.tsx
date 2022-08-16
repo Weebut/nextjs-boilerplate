@@ -16,7 +16,7 @@ export function NavigationBar({
   const isLoggedIn = !!user;
 
   return (
-    <div className="flex h-16 w-screen items-center px-6">
+    <div className="flex h-16 w-screen items-center px-6 text-black dark:bg-black dark:text-white">
       <Link href="/">
         <a>
           <div>LOGO</div>
@@ -31,7 +31,7 @@ export function NavigationBar({
           </Link>
           <button
             onClick={() => signOut()}
-            className="rounded bg-black p-2 text-white"
+            className="rounded bg-black p-2 text-white dark:bg-white dark:text-black"
           >
             Sign out
           </button>

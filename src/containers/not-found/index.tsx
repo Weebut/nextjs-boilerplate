@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export function NofFoundContainer() {
+export function NotFoundContainer() {
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center space-y-8">
       <span className="text-6xl font-bold">404</span>

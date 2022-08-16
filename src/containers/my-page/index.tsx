@@ -1,5 +1,6 @@
 import { PostCard } from '@components/cards/post-card.component';
-import { Layout } from '@components/layouts/layout.component';
+import { SideBarLayout } from '@components/layouts/side-bar-layout.component';
+import { Group } from '@components/side-bars/side-bar.component';
 import { Strip } from '@components/strips/strip.component';
 import { useSession } from 'next-auth/react';
 
@@ -36,8 +37,31 @@ export function MyPageContainer() {
     },
   ];
 
+  const groups: Group[] = [
+    {
+      icon: '🔥',
+      name: '인기 카테고리',
+      tabs: [
+        { name: '웹 개발' },
+        { name: 'React' },
+        { name: 'Python' },
+        { name: 'Android' },
+      ],
+    },
+    {
+      icon: '🧑‍💻',
+      name: '개발',
+      tabs: [
+        { name: '일반 개발' },
+        { name: 'Javascript' },
+        { name: 'React' },
+        { name: 'Vue.js' },
+      ],
+    },
+  ];
+
   return (
-    <Layout session={session}>
+    <SideBarLayout session={session} groups={groups}>
       <Strip>
         <div className="flex h-full w-full flex-col py-12">
           <div className="text-2xl">
@@ -61,6 +85,6 @@ export function MyPageContainer() {
           </div>
         </div>
       </Strip>
-    </Layout>
+    </SideBarLayout>
   );
 }

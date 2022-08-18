@@ -15,8 +15,12 @@
     "prod": "npm install && npm run build && npm run build:tailwind && npm run start"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
     "@headlessui/react": "^1.6.6",
     "@heroicons/react": "^1.0.6",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/material": "^5.10.1",
     "@reduxjs/toolkit": "^1.8.1",
     "axios": "^0.26.1",
     "framer-motion": "^6.5.1",

@@ -11,6 +11,7 @@ interface useSWRInfiniteResult<T> {
   batchs: T[];
   page: number;
   count: number;
+  hasNext: boolean;
   goNext: () => void;
   isLoading: boolean;
   error: any;
@@ -31,6 +32,7 @@ export function useSWRInfinite<T>(
     batchs: data?.map((batch) => parser(batch)) ?? [],
     page: size,
     count: data ? getCount(data[0]) : 0,
+    hasNext: data ? !!getKey(size, data[data.length - 1]) : false,
     goNext: () => setSize((page) => page + 1),
     isLoading: isValidating || !(data || error),
     error,

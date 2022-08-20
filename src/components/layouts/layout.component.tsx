@@ -11,6 +11,8 @@ interface LayoutProps {
 }
 
 export function Layout({ children, session, showFooter }: LayoutProps) {
+  showFooter = showFooter ?? true;
+
   return (
     <div className="flex w-screen flex-col">
       <div className="flex min-h-screen w-full flex-col">

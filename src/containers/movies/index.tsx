@@ -26,7 +26,7 @@ export function MoviesContainer() {
   });
 
   return (
-    <Layout session={session}>
+    <Layout session={session} showFooter={false}>
       <Strip>
         <div className="py-32">
           <span className="text-2xl font-bold">Movies Now Playing</span>

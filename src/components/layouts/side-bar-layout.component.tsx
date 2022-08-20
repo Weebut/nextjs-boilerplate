@@ -10,12 +10,14 @@ interface SideBarLayoutProps {
   children: ReactNode;
   session: Session | null;
   groups: Group[];
+  showFooter?: boolean;
 }
 
 export function SideBarLayout({
   children,
   session,
   groups,
+  showFooter = false,
 }: SideBarLayoutProps) {
   return (
     <div className="flex w-screen flex-col">
@@ -29,7 +31,7 @@ export function SideBarLayout({
           </div>
         </div>
       </div>
-      <Footer />
+      {showFooter && <Footer />}
     </div>
   );
 }

@@ -4,24 +4,20 @@ import {
   FullWidthStripBackgroundColorEnums,
 } from '@components/strips/full-width-strip.component';
 import { Strip } from '@components/strips/strip.component';
-import { useAppDispatch, useAppSelector } from '@redux/hooks';
+import { useMoviesInfinite } from '@hooks/use-movies-infinte';
 import { useSession } from 'next-auth/react';
-import { decrement, increment } from './reducer';
-import { selectHomeValue } from './selectors';
+import { useEffect } from 'react';
 
 export function HomeContainer() {
   const { data: session } = useSession();
 
-  const value = useAppSelector(selectHomeValue);
-  const dispatch = useAppDispatch();
+  const moviesResult = useMoviesInfinite();
 
-  function onIncrease() {
-    dispatch(increment());
-  }
-
-  function onDecrease() {
-    dispatch(decrement());
-  }
+  useEffect(() => {
+    if (moviesResult.error) {
+      alert('API 호출에 실패했습니다!');
+    }
+  }, [moviesResult.error]);
 
   return (
     <Layout session={session}>
@@ -35,26 +31,43 @@ export function HomeContainer() {
         </div>
       </FullWidthStrip>
       <Strip>
-        <div className="flex flex-col space-y-2 py-32">
-          <div>Count : {value}</div>
-          <div className="flex space-x-2">
+        <div className="py-32">
+          <span className="text-2xl font-bold">Movies Now Playing</span>
+          {/* Infinite scroll */}
+          <div className="space-y-4 py-12">
+            {moviesResult?.batchs?.map((batch, idx) => {
+              const { page, movies } = batch;
+              return (
+                <div key={idx}>
+                  {movies.map((movie, idx) => {
+                    const { id, title } = movie;
+
+                    return (
+                      <div key={idx}>
+                        {id} {title}
+                      </div>
+                    );
+                  })}
+                  {page}/{moviesResult?.count}
+                </div>
+              );
+            })}
             <button
-              onClick={onIncrease}
-              className="rounded border px-4 py-2 transition-colors hover:bg-gray-300"
+              onClick={moviesResult.goNext}
+              className="rounded bg-primary p-4 text-white"
             >
-              Increase
-            </button>
-            <button
-              onClick={onDecrease}
-              className="rounded border px-4 py-2 transition-colors hover:bg-gray-300"
-            >
-              Decrease
+              LOAD MORE
             </button>
           </div>
         </div>
       </Strip>
+
       <FullWidthStrip bgColor={FullWidthStripBackgroundColorEnums.BLACK}>
-        <div className="h-[300px]"></div>
+        <div className="flex items-center justify-center py-32">
+          <span className="text-2xl font-bold text-white">
+            Sign up and get your favorite movies!
+          </span>
+        </div>
       </FullWidthStrip>
     </Layout>
   );

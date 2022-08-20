@@ -7,16 +7,17 @@ import { ReactNode } from 'react';
 interface LayoutProps {
   children: ReactNode;
   session: Session | null;
+  showFooter?: boolean;
 }
 
-export function Layout({ children, session }: LayoutProps) {
+export function Layout({ children, session, showFooter }: LayoutProps) {
   return (
     <div className="flex w-screen flex-col">
       <div className="flex min-h-screen w-full flex-col">
         <NavigationBar session={session} signIn={signIn} signOut={signOut} />
         <div className="flex w-full flex-col">{children}</div>
       </div>
-      <Footer />
+      {showFooter && <Footer />}
     </div>
   );
 }

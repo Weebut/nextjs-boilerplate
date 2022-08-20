@@ -10,9 +10,7 @@ interface LayoutProps {
   showFooter?: boolean;
 }
 
-export function Layout({ children, session, showFooter }: LayoutProps) {
-  showFooter = showFooter ?? true;
-
+export function Layout({ children, session, showFooter = true }: LayoutProps) {
   return (
     <div className="flex w-screen flex-col">
       <div className="flex min-h-screen w-full flex-col">

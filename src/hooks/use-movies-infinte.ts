@@ -8,6 +8,8 @@ type Batch = {
 type Movie = {
   id: number;
   title: string;
+  thumbnail: string;
+  overview: string;
 };
 
 function getKey(pageIndex: number, previousPageData: any) {
@@ -23,8 +25,8 @@ function parser(data: any): Batch {
   const { page, results } = data;
 
   const movies = results.map((movie: any) => {
-    const { id, title } = movie;
-    return { id, title };
+    const { id, title, backdrop_path: thumbnail, overview } = movie;
+    return { id, title, thumbnail, overview };
   });
 
   return { page, movies };

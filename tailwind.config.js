@@ -1,4 +1,5 @@
 module.exports = {
+  important: '#__next',
   content: [
     './src/components/**/*.{js,ts,jsx,tsx}',
     './src/containers/**/*.{js,ts,jsx,tsx}',

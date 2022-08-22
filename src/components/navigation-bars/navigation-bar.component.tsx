@@ -34,13 +34,18 @@ export function NavigationBar({
                 </NextLink>
                 <Button
                   onClick={() => signOut()}
-                  className="rounded bg-black p-2 text-white dark:bg-white dark:text-black"
+                  className="rounded bg-black py-2 px-4 text-white dark:bg-white dark:text-black"
                 >
                   Sign out
                 </Button>
               </div>
             ) : (
-              <button onClick={() => signIn()}>Sign in</button>
+              <Button
+                onClick={() => signIn()}
+                className="rounded bg-black py-2 px-4 text-white dark:bg-white dark:text-black"
+              >
+                Sign in
+              </Button>
             )}
           </Box>
         </Toolbar>

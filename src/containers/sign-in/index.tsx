@@ -1,23 +1,14 @@
 import { Layout } from '@components/layouts/layout.component';
 import { Strip } from '@components/strips/strip.component';
-import { AuthProviders } from '@libs/types/auth-providers';
 import { Button, TextField } from '@mui/material';
-import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/router';
 
-interface SignInContainerProps {
-  providers: AuthProviders;
-}
-
-export function SignInContainer({ providers }: SignInContainerProps) {
-  const router = useRouter();
-
-  const query = router.query;
-
-  const callbackUrl = query.callbackUrl as string;
+export function SignInContainer() {
+  function signIn() {
+    // TODO
+  }
 
   return (
-    <Layout session={null}>
+    <Layout>
       <Strip>
         <div className="flex flex-col items-center space-y-12 py-32">
           <div className="">
@@ -35,18 +26,6 @@ export function SignInContainer({ providers }: SignInContainerProps) {
               로그인
             </Button>
           </form>
-          <div className="flex w-full max-w-[300px] flex-col space-y-6">
-            {Object.values(providers).map((provider) => (
-              <Button
-                key={provider.name}
-                variant="contained"
-                onClick={() => signIn(provider.id, { callbackUrl })}
-                className="p-4"
-              >
-                Sign in with {provider.name}
-              </Button>
-            ))}
-          </div>
         </div>
       </Strip>
     </Layout>

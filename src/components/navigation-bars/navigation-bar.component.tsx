@@ -1,19 +1,13 @@
 import { AppBar, Box, Button, Link, Toolbar } from '@mui/material';
-import { Session } from 'next-auth';
 import NextLink from 'next/link';
 
 interface NavigationBarProps {
-  session: Session | null;
   signIn: () => void;
   signOut: () => void;
 }
 
-export function NavigationBar({
-  session,
-  signIn,
-  signOut,
-}: NavigationBarProps) {
-  const user = session?.user;
+export function NavigationBar({ signIn, signOut }: NavigationBarProps) {
+  const user = { name: 'username' };
   const isLoggedIn = !!user;
 
   return (

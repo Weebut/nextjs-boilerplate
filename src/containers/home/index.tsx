@@ -5,14 +5,11 @@ import {
 } from '@components/strips/full-width-strip.component';
 import { Strip } from '@components/strips/strip.component';
 import { Button } from '@mui/material';
-import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 
 export function HomeContainer() {
-  const { data: session } = useSession();
-
   return (
-    <Layout session={session}>
+    <Layout>
       <FullWidthStrip bgColor={FullWidthStripBackgroundColorEnums.PRIMARY}>
         <div className="flex flex-col items-center justify-center py-32">
           <div className="text flex flex-col space-y-3 text-center font-bold text-white">

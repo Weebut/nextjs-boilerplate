@@ -4,7 +4,6 @@ import theme from '@libs/material-ui/theme';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import store from '@redux/store';
 import '@styles/globals.css';
-import { SessionProvider } from 'next-auth/react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { CookiesProvider } from 'react-cookie';
@@ -23,23 +22,21 @@ export default function App({
   pageProps: { session, ...pageProps },
 }: AppPropsExtended) {
   return (
-    <SessionProvider>
-      <ReduxProvider store={store}>
-        <CookiesProvider>
-          <CacheProvider value={emotionCache}>
-            <Head>
-              <meta
-                name="viewport"
-                content="initial-scale=1, width=device-width"
-              />
-            </Head>
-            <ThemeProvider theme={theme}>
-              <CssBaseline />
-              <Component {...pageProps} />
-            </ThemeProvider>
-          </CacheProvider>
-        </CookiesProvider>
-      </ReduxProvider>
-    </SessionProvider>
+    <ReduxProvider store={store}>
+      <CookiesProvider>
+        <CacheProvider value={emotionCache}>
+          <Head>
+            <meta
+              name="viewport"
+              content="initial-scale=1, width=device-width"
+            />
+          </Head>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </CacheProvider>
+      </CookiesProvider>
+    </ReduxProvider>
   );
 }

@@ -2,13 +2,8 @@ import { PostCard } from '@components/cards/post-card.component';
 import { SideBarLayout } from '@components/layouts/side-bar-layout.component';
 import { Group } from '@components/side-bars/side-bar.component';
 import { Strip } from '@components/strips/strip.component';
-import { useSession } from 'next-auth/react';
 
 export function MyPageContainer() {
-  const { data: session } = useSession();
-
-  const user = session?.user;
-
   // Data queried from external service
   const cards = [
     {
@@ -60,8 +55,13 @@ export function MyPageContainer() {
     },
   ];
 
+  const user = {
+    name: 'username',
+    email: 'user@gmail.com',
+  };
+
   return (
-    <SideBarLayout session={session} groups={groups}>
+    <SideBarLayout groups={groups}>
       <Strip>
         <div className="flex h-full w-full flex-col py-12">
           <div className="text-2xl">

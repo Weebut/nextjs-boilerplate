@@ -12,7 +12,7 @@ interface LayoutProps {
 
 export function Layout({ children, session, showFooter = true }: LayoutProps) {
   return (
-    <div className="flex w-screen flex-col">
+    <div className="flex w-full flex-col">
       <div className="flex min-h-screen w-full flex-col">
         <NavigationBar session={session} signIn={signIn} signOut={signOut} />
         <div className="flex w-full flex-col">{children}</div>

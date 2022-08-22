@@ -6,9 +6,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#5c6ac4',
+        primary: '#556cd6',
       },
     },
+  },
+  corePlugins: {
+    // Remove Tailwind CSS's preflight style so it can use the MUI's preflight instead (CssBaseline).
+    preflight: false,
   },
   plugins: [],
 };

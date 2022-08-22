@@ -15,17 +15,16 @@ export function HomeContainer() {
     <Layout session={session}>
       <FullWidthStrip bgColor={FullWidthStripBackgroundColorEnums.PRIMARY}>
         <div className="flex flex-col items-center justify-center py-32">
-          <p className="text text-center">
-            <span className="text-2xl text-white">Title</span>
-            <br />
-            <span className="text-xl text-white">Sub Title</span>
-          </p>
+          <div className="text flex flex-col space-y-3 text-center font-bold text-white">
+            <div className="text-3xl ">Title</div>
+            <div className="text-xl ">Sub Title</div>
+          </div>
         </div>
       </FullWidthStrip>
       <Strip>
         <div className="flex h-[calc(100vh-200px)] items-center justify-center">
           <Link href={{ pathname: '/movies' }} passHref>
-            <Button size="large" variant="contained">
+            <Button size="large" variant="contained" className="font-bold">
               Go to /movies
             </Button>
           </Link>

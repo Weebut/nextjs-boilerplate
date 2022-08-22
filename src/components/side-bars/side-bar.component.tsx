@@ -35,13 +35,13 @@ export function SideBar({ groups }: SideBarProps) {
           <div className="flex flex-col pl-8">
             <div hidden={selected.name !== group.name} className="h-3" />
             {group.tabs.map((tab, idx) => (
-              <button
+              <div
                 key={idx}
                 hidden={selected.name !== group.name}
                 className="py-1 text-left text-black text-opacity-70 transition duration-150 ease-in-out hover:translate-x-[3px] hover:text-opacity-100"
               >
                 {tab.name}
-              </button>
+              </div>
             ))}
           </div>
         </div>

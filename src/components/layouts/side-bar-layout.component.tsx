@@ -1,6 +1,5 @@
 import { Footer } from '@components/footers/footer.component';
 import { NavigationBar } from '@components/navigation-bars/navigation-bar.component';
-import { SideBarModal } from '@components/side-bars/side-bar-modal.component';
 import { Group, SideBar } from '@components/side-bars/side-bar.component';
 import { Session } from 'next-auth';
 import { signIn, signOut } from 'next-auth/react';
@@ -25,7 +24,6 @@ export function SideBarLayout({
         <NavigationBar session={session} signIn={signIn} signOut={signOut} />
         <div className="flex h-auto w-full flex-col py-8 md:flex-row md:py-4">
           <SideBar groups={groups} />
-          <SideBarModal groups={groups} />
           <div className="flex h-full flex-col items-start justify-start">
             {children}
           </div>

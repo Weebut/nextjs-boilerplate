@@ -1,5 +1,7 @@
 import { MyPageContainer } from '@containers/my-page';
+import { authGuard } from '@libs/guards/server/auth.guard';
 import { withSessionSsr } from '@libs/iron-session/iron-session';
+import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 
 export default function MyPage() {
@@ -14,20 +16,15 @@ export default function MyPage() {
 }
 
 export const getServerSideProps = withSessionSsr(
-  async function getServerSideProps({ req }) {
-    const idToken = req.session.idToken;
+  async function getServerSideProps(context: GetServerSidePropsContext) {
+    const { props, redirect } = authGuard(context);
 
-    if (!idToken) {
+    if (redirect) {
       return {
-        redirect: {
-          destination: '/sign-in',
-          permanent: false,
-        },
+        redirect,
       };
     }
 
-    return {
-      props: {},
-    };
+    return { props };
   },
 );

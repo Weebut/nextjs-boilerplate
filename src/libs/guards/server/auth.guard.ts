@@ -5,10 +5,7 @@ interface GuardResponse {
   redirect?: Redirect;
 }
 
-export async function authGuard({
-  req,
-  res,
-}: GetServerSidePropsContext): Promise<GuardResponse> {
+export function authGuard({ req }: GetServerSidePropsContext): GuardResponse {
   const token = req.session.idToken;
 
   if (!token) {

@@ -48,3 +48,7 @@ yarn-error.log*
 .vscode/
 
 build.css
+
+*.log
+
+.firebaserc

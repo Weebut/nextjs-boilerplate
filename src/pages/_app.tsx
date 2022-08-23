@@ -4,11 +4,11 @@ import theme from '@libs/material-ui/theme';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import store from '@redux/store';
 import '@styles/globals.css';
-import { SessionProvider } from 'next-auth/react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { CookiesProvider } from 'react-cookie';
 import { Provider as ReduxProvider } from 'react-redux';
+import { FirebaseAuthProvider } from 'src/providers/firebase-auth';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -23,8 +23,8 @@ export default function App({
   pageProps: { session, ...pageProps },
 }: AppPropsExtended) {
   return (
-    <SessionProvider>
-      <ReduxProvider store={store}>
+    <ReduxProvider store={store}>
+      <FirebaseAuthProvider>
         <CookiesProvider>
           <CacheProvider value={emotionCache}>
             <Head>
@@ -39,7 +39,7 @@ export default function App({
             </ThemeProvider>
           </CacheProvider>
         </CookiesProvider>
-      </ReduxProvider>
-    </SessionProvider>
+      </FirebaseAuthProvider>
+    </ReduxProvider>
   );
 }

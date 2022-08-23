@@ -1,33 +1,31 @@
 import { Layout } from '@components/layouts/layout.component';
 import { Strip } from '@components/strips/strip.component';
-import { signIn } from '@libs/utils/auth/sign-in';
+import { signUp } from '@libs/utils/auth/sign-up';
 import { Button, TextField } from '@mui/material';
-import { useAppDispatch } from '@redux/hooks';
-import { makePending } from '@redux/slices/firebase-auth.slice';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
-export function SignInContainer() {
+export function SignUpContainer() {
   const router = useRouter();
-  const dispatch = useAppDispatch();
 
   const [isLoading, setIsLoading] = useState(false);
 
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [retyped, setRetyped] = useState<string>('');
 
-  async function handleSignIn() {
-    dispatch(makePending());
+  async function handleSignUp() {
     setIsLoading(true);
+
     try {
-      await signIn(email, password);
+      await signUp(email, password);
+      alert('회원가입이 완료되었습니다.');
       router.push('/');
     } catch (err: any) {
-      if (err.code === 'auth/user-not-found') {
-        alert('존재하지 않는 이메일입니다.');
-      } else if (err.code === 'auth/wrong-password') {
-        alert('비밀번호가 틀렸습니다.');
+      if (err.code === 'auth/email-already-in-use') {
+        alert('아이디가 이미 사용 중입니다.');
+        return;
       } else {
         console.error(err);
         alert(`실패했습니다.\n에러 코드 : ${err.code}`);
@@ -42,13 +40,13 @@ export function SignInContainer() {
       <Strip>
         <div className="flex w-full flex-col space-y-4">
           <div className="flex justify-center py-12">
-            <span className="text-3xl font-bold">로그인</span>
+            <span className="text-3xl font-bold">회원가입</span>
           </div>
           <form
             className="flex flex-col space-y-4"
             onSubmit={(event) => {
               event.preventDefault();
-              handleSignIn();
+              handleSignUp();
             }}
           >
             <TextField
@@ -67,25 +65,29 @@ export function SignInContainer() {
               required
               disabled={isLoading}
             />
+            <TextField
+              label="비밀번호 재입력"
+              value={retyped}
+              onChange={(e) => setRetyped(e.target.value)}
+              type="password"
+              required
+              disabled={isLoading}
+            />
             <Button
-              disabled={isLoading || !(email && password)}
+              disabled={
+                isLoading || !(email && password) || password !== retyped
+              }
               fullWidth
               variant="contained"
               type="submit"
             >
-              로그인
+              회원가입
             </Button>
           </form>
-          <div className="flex w-full items-center">
-            <Link href="/reset-password">
+          <div className="flex w-full justify-end">
+            <Link href="/sign-in">
               <a className="text-grey text-sm hover:underline">
-                비밀번호가 기억나지 않나요?
-              </a>
-            </Link>
-            <div className="flex-auto" />
-            <Link href="/sign-up">
-              <a className="text-grey text-sm hover:underline">
-                계정이 없으신가요?
+                계정이 있으신가요?
               </a>
             </Link>
           </div>

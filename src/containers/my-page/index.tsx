@@ -2,13 +2,9 @@ import { PostCard } from '@components/cards/post-card.component';
 import { SideBarLayout } from '@components/layouts/side-bar-layout.component';
 import { Group } from '@components/side-bars/side-bar.component';
 import { Strip } from '@components/strips/strip.component';
-import { useSession } from 'next-auth/react';
+import { useFirebaseUser } from '@hooks/firebase-user';
 
 export function MyPageContainer() {
-  const { data: session } = useSession();
-
-  const user = session?.user;
-
   // Data queried from external service
   const cards = [
     {
@@ -60,14 +56,15 @@ export function MyPageContainer() {
     },
   ];
 
+  const { user } = useFirebaseUser();
+
   return (
-    <SideBarLayout session={session} groups={groups}>
+    <SideBarLayout groups={groups}>
       <Strip>
         <div className="flex h-full w-full flex-col py-12">
           <div className="text-2xl">
-            안녕하세요, <span className="font-bold">{user?.name} 님</span>
+            안녕하세요, <span className="font-bold">{user?.email} 님</span>
           </div>
-          <div>{user?.email}</div>
         </div>
       </Strip>
       <Strip>

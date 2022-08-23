@@ -3,12 +3,9 @@ import { Layout } from '@components/layouts/layout.component';
 import { Strip } from '@components/strips/strip.component';
 import { useIntersectionObserver } from '@hooks/intersection-observer';
 import { useMoviesInfinite } from '@hooks/use-movies-infinte';
-import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 
 export function MoviesContainer() {
-  const { data: session } = useSession();
-
   const moviesResult = useMoviesInfinite();
 
   const infiniteScrollTarget = 'load-more';
@@ -39,7 +36,7 @@ export function MoviesContainer() {
   }
 
   return (
-    <Layout session={session} showFooter={false}>
+    <Layout showFooter={false}>
       <Strip>
         <div className="py-32">
           <span className="text-4xl font-bold">Movies Now Playing</span>

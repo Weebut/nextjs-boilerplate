@@ -11,7 +11,7 @@ export function Layout({ children, showFooter = true }: LayoutProps) {
   return (
     <div className="flex w-full flex-col">
       <div className="flex min-h-screen w-full flex-col">
-        <NavigationBar signIn={() => {}} signOut={() => {}} />
+        <NavigationBar />
         <div className="flex w-full flex-col">{children}</div>
       </div>
       {showFooter && <Footer />}

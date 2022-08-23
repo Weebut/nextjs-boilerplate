@@ -18,7 +18,7 @@ export function SideBarLayout({
   return (
     <div className="flex w-screen flex-col">
       <div className="flex h-auto min-h-screen w-full flex-col bg-gray-100">
-        <NavigationBar signIn={() => {}} signOut={() => {}} />
+        <NavigationBar />
         <div className="flex h-auto w-full flex-col py-8 md:flex-row md:py-4">
           <SideBar groups={groups} />
           <div className="flex h-full flex-col items-start justify-start">

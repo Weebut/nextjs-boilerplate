@@ -10,7 +10,7 @@ export function NavigationBar() {
 
   return (
     <AppBar position="static" color="primary">
-      <div className="px-6">
+      <Box className="px-6">
         <Toolbar disableGutters>
           <NextLink href="/" passHref>
             <Link className="font-bold text-white">LOGO</Link>
@@ -20,7 +20,7 @@ export function NavigationBar() {
 
           <Box sx={{ flexGrow: 0 }}>
             {isLoggedIn ? (
-              <div className="flex items-center space-x-4">
+              <Box className="flex items-center space-x-4">
                 <NextLink href="/my-page" passHref>
                   <Link className="font-bold text-white">{user.email}</Link>
                 </NextLink>
@@ -30,7 +30,7 @@ export function NavigationBar() {
                 >
                   Sign out
                 </Button>
-              </div>
+              </Box>
             ) : (
               <NextLink href="/sign-in" passHref>
                 <Link className="rounded bg-black py-2 px-4 text-white dark:bg-white dark:text-black">
@@ -40,7 +40,7 @@ export function NavigationBar() {
             )}
           </Box>
         </Toolbar>
-      </div>
+      </Box>
     </AppBar>
   );
 }

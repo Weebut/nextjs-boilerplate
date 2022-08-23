@@ -3,6 +3,7 @@ import { SideBarLayout } from '@components/layouts/side-bar-layout.component';
 import { Group } from '@components/side-bars/side-bar.component';
 import { Strip } from '@components/strips/strip.component';
 import { useFirebaseUser } from '@hooks/firebase-user';
+import { Box, Typography } from '@mui/material';
 
 export function MyPageContainer() {
   // Data queried from external service
@@ -61,26 +62,31 @@ export function MyPageContainer() {
   return (
     <SideBarLayout groups={groups}>
       <Strip>
-        <div className="flex h-full w-full flex-col py-12">
-          <div className="text-2xl">
-            안녕하세요, <span className="font-bold">{user?.email} 님</span>
-          </div>
-        </div>
+        <Box className="flex h-full w-full flex-col py-12">
+          <Box>
+            <Typography className="text-2xl">안녕하세요,</Typography>
+            <Typography className="text-2xl font-bold">
+              {user?.email} 님
+            </Typography>
+          </Box>
+        </Box>
       </Strip>
       <Strip>
-        <div className="flex w-full flex-col space-y-4">
-          <div className="flex flex-col space-y-2">
-            <span className="text-xl font-bold">대기 중인 포스트</span>
-            <span className="text-sm">
+        <Box className="flex w-full flex-col space-y-4">
+          <Box className="flex flex-col space-y-2">
+            <Typography className="text-xl font-bold">
+              대기 중인 포스트
+            </Typography>
+            <Typography className="text-sm">
               포스트 심사 결과는 매주 수요일 발표됩니다
-            </span>
-          </div>
-          <div className="flex flex-wrap">
+            </Typography>
+          </Box>
+          <Box className="flex flex-wrap">
             {cards.map((card, index) => (
               <PostCard key={index} card={card} />
             ))}
-          </div>
-        </div>
+          </Box>
+        </Box>
       </Strip>
     </SideBarLayout>
   );

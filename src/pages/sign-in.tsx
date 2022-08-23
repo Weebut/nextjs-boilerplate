@@ -1,15 +1,16 @@
 import { SignInContainer } from '@containers/sign-in';
 import { withSessionSsr } from '@libs/iron-session/iron-session';
+import { Box } from '@mui/material';
 import Head from 'next/head';
 
 export default function SignInPage() {
   return (
-    <div>
+    <Box>
       <Head>
         <title>로그인 | iN!T</title>
       </Head>
       <SignInContainer />
-    </div>
+    </Box>
   );
 }
 

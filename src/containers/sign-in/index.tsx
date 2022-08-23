@@ -1,10 +1,10 @@
 import { Layout } from '@components/layouts/layout.component';
 import { Strip } from '@components/strips/strip.component';
 import { signIn } from '@libs/utils/auth/sign-in';
-import { Button, TextField } from '@mui/material';
+import { Box, Button, Link, TextField, Typography } from '@mui/material';
 import { useAppDispatch } from '@redux/hooks';
 import { makePending } from '@redux/slices/firebase-auth.slice';
-import Link from 'next/link';
+import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
@@ -40,10 +40,10 @@ export function SignInContainer() {
   return (
     <Layout>
       <Strip>
-        <div className="flex w-full flex-col space-y-4">
-          <div className="flex justify-center py-12">
-            <span className="text-3xl font-bold">로그인</span>
-          </div>
+        <Box className="flex w-full flex-col space-y-4">
+          <Box className="flex justify-center py-12">
+            <Typography className="text-3xl font-bold">로그인</Typography>
+          </Box>
           <form
             className="flex flex-col space-y-4"
             onSubmit={(event) => {
@@ -76,20 +76,20 @@ export function SignInContainer() {
               로그인
             </Button>
           </form>
-          <div className="flex w-full items-center">
-            <Link href="/reset-password">
-              <a className="text-grey text-sm hover:underline">
+          <Box className="flex w-full items-center">
+            <NextLink href="/reset-password" passHref>
+              <Link className="text-grey text-sm hover:underline">
                 비밀번호가 기억나지 않나요?
-              </a>
-            </Link>
-            <div className="flex-auto" />
-            <Link href="/sign-up">
-              <a className="text-grey text-sm hover:underline">
+              </Link>
+            </NextLink>
+            <Box className="flex-auto" />
+            <NextLink href="/sign-up" passHref>
+              <Link className="text-grey text-sm hover:underline">
                 계정이 없으신가요?
-              </a>
-            </Link>
-          </div>
-        </div>
+              </Link>
+            </NextLink>
+          </Box>
+        </Box>
       </Strip>
     </Layout>
   );

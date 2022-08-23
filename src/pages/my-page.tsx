@@ -1,17 +1,18 @@
 import { MyPageContainer } from '@containers/my-page';
 import { authGuard } from '@libs/guards/server/auth.guard';
 import { withSessionSsr } from '@libs/iron-session/iron-session';
+import { Box } from '@mui/material';
 import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 
 export default function MyPage() {
   return (
-    <div>
+    <Box>
       <Head>
         <title>마이 페이지</title>
       </Head>
       <MyPageContainer />
-    </div>
+    </Box>
   );
 }
 

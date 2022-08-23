@@ -1,7 +1,7 @@
 import { Layout } from '@components/layouts/layout.component';
 import { Strip } from '@components/strips/strip.component';
 import { signUp } from '@libs/utils/auth/sign-up';
-import { Button, TextField } from '@mui/material';
+import { Box, Button, TextField, Typography } from '@mui/material';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -38,10 +38,10 @@ export function SignUpContainer() {
   return (
     <Layout>
       <Strip>
-        <div className="flex w-full flex-col space-y-4">
-          <div className="flex justify-center py-12">
-            <span className="text-3xl font-bold">회원가입</span>
-          </div>
+        <Box className="flex w-full flex-col space-y-4">
+          <Box className="flex justify-center py-12">
+            <Typography className="text-3xl font-bold">회원가입</Typography>
+          </Box>
           <form
             className="flex flex-col space-y-4"
             onSubmit={(event) => {
@@ -84,14 +84,14 @@ export function SignUpContainer() {
               회원가입
             </Button>
           </form>
-          <div className="flex w-full justify-end">
+          <Box className="flex w-full justify-end">
             <Link href="/sign-in">
               <a className="text-grey text-sm hover:underline">
                 계정이 있으신가요?
               </a>
             </Link>
-          </div>
-        </div>
+          </Box>
+        </Box>
       </Strip>
     </Layout>
   );

@@ -1,8 +1,8 @@
 import { Layout } from '@components/layouts/layout.component';
 import { Strip } from '@components/strips/strip.component';
 import { sendPasswordResetEmail } from '@libs/utils/auth/send-password-reset-email';
-import { Button, TextField } from '@mui/material';
-import Link from 'next/link';
+import { Box, Button, Link, TextField, Typography } from '@mui/material';
+import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
@@ -13,10 +13,12 @@ export function ResetPasswordContainer() {
   return (
     <Layout>
       <Strip>
-        <div className="flex w-full flex-col space-y-4">
-          <div className="flex justify-center py-12">
-            <span className="text-3xl font-bold">비밀번호 재설정</span>
-          </div>
+        <Box className="flex w-full flex-col space-y-4">
+          <Box className="flex justify-center py-12">
+            <Typography className="text-3xl font-bold">
+              비밀번호 재설정
+            </Typography>
+          </Box>
           <form
             onSubmit={async (event) => {
               event.preventDefault();
@@ -52,14 +54,14 @@ export function ResetPasswordContainer() {
               비밀번호 재설정
             </Button>
           </form>
-          <div className="flex w-full justify-end">
-            <Link href="/sign-in">
-              <a className="text-grey text-sm hover:underline">
+          <Box className="flex w-full justify-end">
+            <NextLink href="/sign-in" passHref>
+              <Link className="text-grey text-sm hover:underline">
                 계정이 있으신가요?
-              </a>
-            </Link>
-          </div>
-        </div>
+              </Link>
+            </NextLink>
+          </Box>
+        </Box>
       </Strip>
     </Layout>
   );

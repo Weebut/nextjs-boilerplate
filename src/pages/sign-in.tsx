@@ -1,14 +1,14 @@
-import { MyPageContainer } from '@containers/my-page';
+import { SignInContainer } from '@containers/sign-in';
 import { withSessionSsr } from '@libs/iron-session/iron-session';
 import Head from 'next/head';
 
-export default function MyPage() {
+export default function SignInPage() {
   return (
     <div>
       <Head>
-        <title>마이 페이지</title>
+        <title>로그인 | iN!T</title>
       </Head>
-      <MyPageContainer />
+      <SignInContainer />
     </div>
   );
 }
@@ -17,10 +17,10 @@ export const getServerSideProps = withSessionSsr(
   async function getServerSideProps({ req }) {
     const idToken = req.session.idToken;
 
-    if (!idToken) {
+    if (idToken) {
       return {
         redirect: {
-          destination: '/sign-in',
+          destination: '/',
           permanent: false,
         },
       };

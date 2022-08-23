@@ -1,13 +1,11 @@
+import { useFirebaseUser } from '@hooks/firebase-user';
+import { signOut } from '@libs/utils/auth/sign-out';
 import { AppBar, Box, Button, Link, Toolbar } from '@mui/material';
 import NextLink from 'next/link';
 
-interface NavigationBarProps {
-  signIn: () => void;
-  signOut: () => void;
-}
+export function NavigationBar() {
+  const { user } = useFirebaseUser();
 
-export function NavigationBar({ signIn, signOut }: NavigationBarProps) {
-  const user = { name: 'username' };
   const isLoggedIn = !!user;
 
   return (
@@ -24,7 +22,7 @@ export function NavigationBar({ signIn, signOut }: NavigationBarProps) {
             {isLoggedIn ? (
               <div className="flex items-center space-x-4">
                 <NextLink href="/my-page" passHref>
-                  <Link className="font-bold text-white">{user.name}</Link>
+                  <Link className="font-bold text-white">{user.email}</Link>
                 </NextLink>
                 <Button
                   onClick={() => signOut()}
@@ -34,12 +32,11 @@ export function NavigationBar({ signIn, signOut }: NavigationBarProps) {
                 </Button>
               </div>
             ) : (
-              <Button
-                onClick={() => signIn()}
-                className="rounded bg-black py-2 px-4 text-white dark:bg-white dark:text-black"
-              >
-                Sign in
-              </Button>
+              <NextLink href="/sign-in" passHref>
+                <Link className="rounded bg-black py-2 px-4 text-white dark:bg-white dark:text-black">
+                  Sign in
+                </Link>
+              </NextLink>
             )}
           </Box>
         </Toolbar>

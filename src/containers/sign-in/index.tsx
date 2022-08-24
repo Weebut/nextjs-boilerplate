@@ -1,6 +1,7 @@
 import { Layout } from '@components/layouts/layout.component';
 import { Strip } from '@components/strips/strip.component';
 import { signIn } from '@libs/utils/auth/sign-in';
+import { signInWithGithub } from '@libs/utils/auth/sign-in-with-github';
 import { signInWithGoogle } from '@libs/utils/auth/sign-in-with-google';
 import { Box, Button, Link, TextField, Typography } from '@mui/material';
 import { useAppDispatch } from '@redux/hooks';
@@ -78,6 +79,7 @@ export function SignInContainer() {
             </Button>
           </form>
           <Button onClick={signInWithGoogle}>Sign in with Google</Button>
+          <Button onClick={signInWithGithub}>Sign in with Github</Button>
           <Box className="flex w-full items-center">
             <NextLink href="/reset-password" passHref>
               <Link className="text-grey text-sm hover:underline">

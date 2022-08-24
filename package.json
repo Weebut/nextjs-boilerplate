@@ -12,7 +12,8 @@
     "start": "next start",
     "clean": "rm -rf .next",
     "lint": "next lint",
-    "prod": "npm install && npm run build && npm run build:tailwind && npm run start"
+    "prod": "npm install && npm run build && npm run build:tailwind && npm run start",
+    "emulators": "firebase emulators:start"
   },
   "dependencies": {
     "@emotion/cache": "^11.10.1",

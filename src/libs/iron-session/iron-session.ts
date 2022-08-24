@@ -6,10 +6,13 @@ import {
   NextApiHandler,
 } from 'next';
 
-const ttl = 60 * 50; // 50 minutes
+const ttl = 2 * 7 * 24 * 60 * 60; // 50 minutes
 
 const sessionOptions = {
-  password: process.env.SECRET_COOKIE_PASSWORD as string,
+  password: {
+    1: process.env.SECRET_COOKIE_PASSWORD_1 as string,
+    2: process.env.SECRET_COOKIE_PASSWORD_2 as string,
+  },
   cookieName: 'iron-session-cookie',
   ttl,
   cookieOptions: {

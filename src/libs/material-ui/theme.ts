@@ -2,6 +2,7 @@ import { createTheme } from '@mui/material';
 import { red } from '@mui/material/colors';
 
 const theme = createTheme({
+  spacing: 4,
   typography: {
     fontFamily: [
       '"Noto Sans KR"',

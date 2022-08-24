@@ -4,7 +4,7 @@ import {
   FullWidthStripBackgroundColorEnums,
 } from '@components/strips/full-width-strip.component';
 import { Strip } from '@components/strips/strip.component';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Stack, Typography } from '@mui/material';
 import Link from 'next/link';
 
 export function HomeContainer() {
@@ -12,10 +12,13 @@ export function HomeContainer() {
     <Layout>
       <FullWidthStrip bgColor={FullWidthStripBackgroundColorEnums.PRIMARY}>
         <Box className="flex flex-col items-center justify-center py-32">
-          <Box className="text flex flex-col space-y-3 text-center font-bold text-white">
-            <Box className="text-3xl ">Title</Box>
-            <Box className="text-xl ">Sub Title</Box>
-          </Box>
+          <Stack
+            spacing={3}
+            className="text flex flex-col text-center font-bold text-white"
+          >
+            <Typography variant="h3">Title</Typography>
+            <Typography variant="h6">Sub Title</Typography>
+          </Stack>
         </Box>
       </FullWidthStrip>
       <Strip>
@@ -28,11 +31,13 @@ export function HomeContainer() {
         </Box>
       </Strip>
       <FullWidthStrip bgColor={FullWidthStripBackgroundColorEnums.BLACK}>
-        <Box className="flex items-center justify-center py-32">
-          <Typography className="text-2xl font-bold text-white">
-            Sign up and get your favorite movies!
-          </Typography>
-        </Box>
+        <Link href={{ pathname: '/movies' }} passHref>
+          <Box className="flex cursor-pointer items-center justify-center py-32">
+            <Typography className="text-2xl font-bold text-white">
+              Sign up and get your favorite movies!
+            </Typography>
+          </Box>
+        </Link>
       </FullWidthStrip>
     </Layout>
   );

@@ -1,7 +1,7 @@
 import { Layout } from '@components/layouts/layout.component';
 import { Strip } from '@components/strips/strip.component';
 import { signUp } from '@libs/utils/auth/sign-up';
-import { Box, Button, TextField, Typography } from '@mui/material';
+import { Box, Button, Stack, TextField, Typography } from '@mui/material';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -38,7 +38,7 @@ export function SignUpContainer() {
   return (
     <Layout>
       <Strip>
-        <Box className="flex w-full flex-col space-y-4">
+        <Stack spacing={4} className="flex w-full flex-col">
           <Box className="flex justify-center py-12">
             <Typography className="text-3xl font-bold">회원가입</Typography>
           </Box>
@@ -91,7 +91,7 @@ export function SignUpContainer() {
               </a>
             </Link>
           </Box>
-        </Box>
+        </Stack>
       </Strip>
     </Layout>
   );

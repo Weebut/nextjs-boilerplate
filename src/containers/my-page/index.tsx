@@ -3,7 +3,7 @@ import { SideBarLayout } from '@components/layouts/side-bar-layout.component';
 import { Group } from '@components/side-bars/side-bar.component';
 import { Strip } from '@components/strips/strip.component';
 import { useFirebaseUser } from '@hooks/firebase-user';
-import { Box, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 
 export function MyPageContainer() {
   // Data queried from external service
@@ -72,21 +72,21 @@ export function MyPageContainer() {
         </Box>
       </Strip>
       <Strip>
-        <Box className="flex w-full flex-col space-y-4">
-          <Box className="flex flex-col space-y-2">
+        <Stack spacing={4} className="flex w-full flex-col">
+          <Stack spacing={2} className="flex flex-col">
             <Typography className="text-xl font-bold">
               대기 중인 포스트
             </Typography>
             <Typography className="text-sm">
               포스트 심사 결과는 매주 수요일 발표됩니다
             </Typography>
-          </Box>
+          </Stack>
           <Box className="flex flex-wrap">
             {cards.map((card, index) => (
               <PostCard key={index} card={card} />
             ))}
           </Box>
-        </Box>
+        </Stack>
       </Strip>
     </SideBarLayout>
   );

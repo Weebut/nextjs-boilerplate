@@ -1,7 +1,7 @@
 import { Layout } from '@components/layouts/layout.component';
 import { Strip } from '@components/strips/strip.component';
 import { sendPasswordResetEmail } from '@libs/utils/auth/send-password-reset-email';
-import { Box, Button, Link, TextField, Typography } from '@mui/material';
+import { Box, Button, Link, Stack, TextField, Typography } from '@mui/material';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -13,7 +13,7 @@ export function ResetPasswordContainer() {
   return (
     <Layout>
       <Strip>
-        <Box className="flex w-full flex-col space-y-4">
+        <Stack spacing={4} className="flex w-full flex-col">
           <Box className="flex justify-center py-12">
             <Typography className="text-3xl font-bold">
               비밀번호 재설정
@@ -61,7 +61,7 @@ export function ResetPasswordContainer() {
               </Link>
             </NextLink>
           </Box>
-        </Box>
+        </Stack>
       </Strip>
     </Layout>
   );

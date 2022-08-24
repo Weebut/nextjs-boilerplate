@@ -1,5 +1,5 @@
 import { shortenString } from '@libs/utils/string';
-import { Box, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 
 interface Card {
   title: string;
@@ -19,13 +19,13 @@ export function PostCard({ card }: PostCardProps) {
   const description = shortenString(card.description, maxDescriptionLength);
 
   return (
-    <Box className="relative mr-6 mb-6 h-[150px] w-[300px] rounded bg-white p-4">
-      <Box className="flex flex-col space-y-2">
+    <Box className="mr-6 mb-6 h-[150px] w-[300px] rounded bg-white p-4">
+      <Stack spacing={2} className="flex flex-col">
         <Typography>{title}</Typography>
         <Typography className="h-[60px] w-full text-sm">
           {description}
         </Typography>
-      </Box>
+      </Stack>
       <Box className="text-sm text-primary hover:underline">더보기</Box>
     </Box>
   );

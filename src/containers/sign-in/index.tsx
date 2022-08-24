@@ -3,7 +3,7 @@ import { Strip } from '@components/strips/strip.component';
 import { signIn } from '@libs/utils/auth/sign-in';
 import { signInWithGithub } from '@libs/utils/auth/sign-in-with-github';
 import { signInWithGoogle } from '@libs/utils/auth/sign-in-with-google';
-import { Box, Button, Link, TextField, Typography } from '@mui/material';
+import { Box, Button, Link, Stack, TextField, Typography } from '@mui/material';
 import { useAppDispatch } from '@redux/hooks';
 import { makePending } from '@redux/slices/firebase-auth.slice';
 import NextLink from 'next/link';
@@ -42,7 +42,7 @@ export function SignInContainer() {
   return (
     <Layout>
       <Strip>
-        <Box className="flex w-full flex-col space-y-4">
+        <Stack spacing={4} className="flex w-full flex-col">
           <Box className="flex justify-center py-12">
             <Typography className="text-3xl font-bold">로그인</Typography>
           </Box>
@@ -93,7 +93,7 @@ export function SignInContainer() {
               </Link>
             </NextLink>
           </Box>
-        </Box>
+        </Stack>
       </Strip>
     </Layout>
   );

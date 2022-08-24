@@ -26,15 +26,15 @@ export function NavigationBar() {
                 </NextLink>
                 <Button
                   onClick={() => signOut()}
-                  className="rounded bg-black py-2 px-4 text-white dark:bg-white dark:text-black"
+                  className="rounded py-2 px-4 font-bold text-white"
                 >
-                  Sign out
+                  SIGN OUT
                 </Button>
               </Box>
             ) : (
               <NextLink href="/sign-in" passHref>
-                <Link className="rounded bg-black py-2 px-4 text-white dark:bg-white dark:text-black">
-                  Sign in
+                <Link className="rounded py-2 px-4 font-bold text-white">
+                  SIGN IN
                 </Link>
               </NextLink>
             )}

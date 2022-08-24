@@ -1,4 +1,5 @@
 import { MyPageContainer } from '@containers/my-page';
+import { ClientSideAuthGuard } from '@libs/guards/client/auth.guard';
 import { authGuard } from '@libs/guards/server/auth.guard';
 import { withSessionSsr } from '@libs/iron-session/iron-session';
 import { Box } from '@mui/material';
@@ -7,12 +8,14 @@ import Head from 'next/head';
 
 export default function MyPage() {
   return (
-    <Box>
-      <Head>
-        <title>마이 페이지</title>
-      </Head>
-      <MyPageContainer />
-    </Box>
+    <ClientSideAuthGuard>
+      <Box>
+        <Head>
+          <title>마이 페이지</title>
+        </Head>
+        <MyPageContainer />
+      </Box>
+    </ClientSideAuthGuard>
   );
 }
 

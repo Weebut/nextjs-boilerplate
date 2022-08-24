@@ -18,6 +18,10 @@ export function FirebaseAuthProvider({
       if (user) {
         const idToken = await user.getIdToken();
 
+        if (!idToken) {
+          return;
+        }
+
         await fetch('/api/auth/sign-in', {
           method: 'POST',
           headers: { 'content-type': 'application/json' },

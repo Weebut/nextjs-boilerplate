@@ -1,6 +1,7 @@
 import { Layout } from '@components/layouts/layout.component';
 import { Strip } from '@components/strips/strip.component';
 import { signIn } from '@libs/utils/auth/sign-in';
+import { signInWithGoogle } from '@libs/utils/auth/sign-in-with-google';
 import { Box, Button, Link, TextField, Typography } from '@mui/material';
 import { useAppDispatch } from '@redux/hooks';
 import { makePending } from '@redux/slices/firebase-auth.slice';
@@ -76,6 +77,7 @@ export function SignInContainer() {
               로그인
             </Button>
           </form>
+          <Button onClick={signInWithGoogle}>Sign in with Google</Button>
           <Box className="flex w-full items-center">
             <NextLink href="/reset-password" passHref>
               <Link className="text-grey text-sm hover:underline">

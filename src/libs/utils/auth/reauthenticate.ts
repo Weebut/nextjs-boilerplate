@@ -1,12 +1,8 @@
-import {
-  getAuth,
-  reauthenticateWithCredential,
-  EmailAuthProvider,
-} from 'firebase/auth';
+import { firebaseAuth } from '@libs/firebase/client';
+import { EmailAuthProvider, reauthenticateWithCredential } from 'firebase/auth';
 
 export async function reauthenticate(email: string, password: string) {
-  const auth = getAuth();
-  const user = auth.currentUser;
+  const user = firebaseAuth.currentUser;
   if (!user) {
     throw new Error('Unauthorized');
   }

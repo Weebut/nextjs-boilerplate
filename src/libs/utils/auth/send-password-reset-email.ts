@@ -1,7 +1,6 @@
-import { getAuth, sendPasswordResetEmail as sendEmail } from 'firebase/auth';
+import { firebaseAuth } from '@libs/firebase/client';
+import { sendPasswordResetEmail as sendEmail } from 'firebase/auth';
 
 export async function sendPasswordResetEmail(email: string) {
-  const auth = getAuth();
-
-  await sendEmail(auth, email);
+  await sendEmail(firebaseAuth, email);
 }

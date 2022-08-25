@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - NODE_VERSION=${NODE_VERSION:-16.14.2}
+    image: ${ECR_REGISTRY}/${ECR_WEB_REPOSITORY}:${NODE_VERSION:-16.14.2}-${ENV:-dev}-${TAG:-latest}
+    container_name: web
+    restart: always
+    ports:
+      - ${WEB_PORT:-3000}:3000
+    env_file:
+      - .env

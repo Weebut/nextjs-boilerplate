@@ -3,6 +3,7 @@ import { Layout } from '@components/layouts/layout.component';
 import { Strip } from '@components/strips/strip.component';
 import { useIntersectionObserver } from '@hooks/intersection-observer';
 import { useMoviesInfinite } from '@hooks/use-movies-infinte';
+import { useWarnBeforeClosing } from '@hooks/warn-before-closing';
 import { Box, Typography } from '@mui/material';
 import { useEffect } from 'react';
 
@@ -23,6 +24,8 @@ export function MoviesContainer() {
     goNext: moviesResult.goNext,
     target: infiniteScrollTarget,
   });
+
+  useWarnBeforeClosing({ isClosable: false });
 
   function getMovies() {
     if (moviesResult) {

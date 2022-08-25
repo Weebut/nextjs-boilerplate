@@ -1,7 +1,21 @@
 version: '3.8'
 
 services:
-  web:
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+      args:
+        - NGINX_VERSION=${NGINX_VERSION:-1.19}
+    image: ${ECR_REGISTRY}/${ECR_WEB_NGINX_REPOSITORY}:${NGINX_VERSION:-1.19}-${ENV:-dev}-${TAG:-latest}
+    container_name: nginx
+    ports:
+      - 80:80
+    env_file:
+      - .env
+    depends_on:
+      - web
+  app:
     build:
       context: .
       dockerfile: Dockerfile

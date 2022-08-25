@@ -4,6 +4,7 @@ const nextConfig = {
   images: {
     domains: ['www.themoviedb.org', 's.gravatar.com'],
   },
+  output: 'standalone',
 };
 
 module.exports = nextConfig;

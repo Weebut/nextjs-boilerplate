@@ -18,7 +18,7 @@ export function useIntersectionObserver(props: useIntersectionObserverProps) {
 
       const target =
         typeof props.target === 'string'
-          ? document.querySelector('#load-more')
+          ? document.querySelector(`#${props.target}`)
           : props.target;
 
       if (!target) {

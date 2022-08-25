@@ -1,44 +1,46 @@
-import { Session } from 'next-auth';
-import Link from 'next/link';
+import { useFirebaseUser } from '@hooks/firebase-user';
+import { signOut } from '@libs/utils/auth/sign-out';
+import { AppBar, Box, Button, Link, Toolbar } from '@mui/material';
+import NextLink from 'next/link';
 
-interface NavigationBarProps {
-  session: Session | null;
-  signIn: () => void;
-  signOut: () => void;
-}
+export function NavigationBar() {
+  const { user } = useFirebaseUser();
 
-export function NavigationBar({
-  session,
-  signIn,
-  signOut,
-}: NavigationBarProps) {
-  const user = session?.user;
   const isLoggedIn = !!user;
 
   return (
-    <div className="flex h-16 w-screen items-center px-6 text-black dark:bg-black dark:text-white">
-      <Link href="/">
-        <a>
-          <div>LOGO</div>
-        </a>
-      </Link>
+    <AppBar position="static" color="primary">
+      <Box className="px-6">
+        <Toolbar disableGutters>
+          <NextLink href="/" passHref>
+            <Link className="font-bold text-white">LOGO</Link>
+          </NextLink>
 
-      <div className="flex-auto" />
-      {isLoggedIn ? (
-        <div className="flex items-center space-x-4">
-          <Link href="/my-page">
-            <a>{isLoggedIn && <div>Welcome, {user.name}</div>}</a>
-          </Link>
-          <button
-            onClick={() => signOut()}
-            className="rounded bg-black p-2 text-white dark:bg-white dark:text-black"
-          >
-            Sign out
-          </button>
-        </div>
-      ) : (
-        <button onClick={() => signIn()}>Sign in</button>
-      )}
-    </div>
+          <Box sx={{ flexGrow: 1 }} />
+
+          <Box sx={{ flexGrow: 0 }}>
+            {isLoggedIn ? (
+              <Box className="flex items-center space-x-4">
+                <NextLink href="/my-page" passHref>
+                  <Link className="font-bold text-white">{user.email}</Link>
+                </NextLink>
+                <Button
+                  onClick={() => signOut()}
+                  className="rounded py-2 px-4 font-bold text-white"
+                >
+                  SIGN OUT
+                </Button>
+              </Box>
+            ) : (
+              <NextLink href="/sign-in" passHref>
+                <Link className="rounded py-2 px-4 font-bold text-white">
+                  SIGN IN
+                </Link>
+              </NextLink>
+            )}
+          </Box>
+        </Toolbar>
+      </Box>
+    </AppBar>
   );
 }

@@ -1,4 +1,5 @@
 import { shortenString } from '@libs/utils/string';
+import { Box, Stack, Typography } from '@mui/material';
 
 interface Card {
   title: string;
@@ -18,12 +19,14 @@ export function PostCard({ card }: PostCardProps) {
   const description = shortenString(card.description, maxDescriptionLength);
 
   return (
-    <div className="relative mr-6 mb-6 h-[150px] w-[300px] rounded border p-4 delay-150 duration-300 ease-out hover:-translate-y-1 hover:scale-105">
-      <div className="flex flex-col space-y-2">
-        <span>{title}</span>
-        <span className="h-[60px] w-full text-sm">{description}</span>
-      </div>
-      <button className="text-sm text-primary">더보기</button>
-    </div>
+    <Box className="mr-6 mb-6 h-[150px] w-[300px] rounded bg-white p-4">
+      <Stack spacing={2} className="flex flex-col">
+        <Typography>{title}</Typography>
+        <Typography className="h-[60px] w-full text-sm">
+          {description}
+        </Typography>
+      </Stack>
+      <Box className="text-sm text-primary hover:underline">더보기</Box>
+    </Box>
   );
 }

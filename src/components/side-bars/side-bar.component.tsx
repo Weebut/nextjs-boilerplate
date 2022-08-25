@@ -1,3 +1,4 @@
+import { Box, Typography } from '@mui/material';
 import { useState } from 'react';
 
 interface SideBarProps {
@@ -18,10 +19,10 @@ export function SideBar({ groups }: SideBarProps) {
   const [selected, setSelected] = useState<Group>(groups[0]);
 
   return (
-    <div className="hidden h-full w-[300px] p-6 md:block">
+    <Box className="hidden h-full w-[300px] p-6 md:block">
       {groups.map((group, idx) => (
-        <div key={idx} className="my-1 flex flex-col">
-          <div
+        <Box key={idx} className="my-1 flex flex-col">
+          <Box
             onClick={() => setSelected(group)}
             className={
               selected.name === group.name
@@ -29,23 +30,23 @@ export function SideBar({ groups }: SideBarProps) {
                 : `flex space-x-2 rounded-lg p-3 text-lg transition-colors hover:bg-white`
             }
           >
-            <span>{group.icon}</span>
-            <span> {group.name}</span>
-          </div>
-          <div className="flex flex-col pl-8">
-            <div hidden={selected.name !== group.name} className="h-3" />
+            <Typography>{group.icon}</Typography>
+            <Typography> {group.name}</Typography>
+          </Box>
+          <Box className="flex flex-col pl-8">
+            <Box hidden={selected.name !== group.name} className="h-3" />
             {group.tabs.map((tab, idx) => (
-              <button
+              <Box
                 key={idx}
                 hidden={selected.name !== group.name}
                 className="py-1 text-left text-black text-opacity-70 transition duration-150 ease-in-out hover:translate-x-[3px] hover:text-opacity-100"
               >
                 {tab.name}
-              </button>
+              </Box>
             ))}
-          </div>
-        </div>
+          </Box>
+        </Box>
       ))}
-    </div>
+    </Box>
   );
 }

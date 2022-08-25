@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import { ReactNode } from 'react';
 import { Strip } from './strip.component';
 
@@ -23,27 +24,27 @@ export function FullWidthStrip({
   switch (bgColor) {
     case FullWidthStripBackgroundColorEnums.BLACK:
       return (
-        <div className={`w-full bg-black`}>
+        <Box className={`w-full bg-black`}>
           <Strip>{children}</Strip>
-        </div>
+        </Box>
       );
     case FullWidthStripBackgroundColorEnums.WHITE:
       return (
-        <div className={`w-full bg-white`}>
+        <Box className={`w-full bg-white`}>
           <Strip>{children}</Strip>
-        </div>
+        </Box>
       );
     case FullWidthStripBackgroundColorEnums.PRIMARY:
       return (
-        <div className={`w-full bg-primary`}>
+        <Box className={`w-full bg-primary`}>
           <Strip>{children}</Strip>
-        </div>
+        </Box>
       );
     default:
       return (
-        <div className={`w-full bg-transparent`}>
+        <Box className={`w-full bg-transparent`}>
           <Strip>{children}</Strip>
-        </div>
+        </Box>
       );
   }
 }

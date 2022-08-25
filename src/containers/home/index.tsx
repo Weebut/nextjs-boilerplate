@@ -4,57 +4,40 @@ import {
   FullWidthStripBackgroundColorEnums,
 } from '@components/strips/full-width-strip.component';
 import { Strip } from '@components/strips/strip.component';
-import { useAppDispatch, useAppSelector } from '@redux/hooks';
-import { useSession } from 'next-auth/react';
-import { decrement, increment } from './reducer';
-import { selectHomeValue } from './selectors';
+import { Box, Button, Stack, Typography } from '@mui/material';
+import Link from 'next/link';
 
 export function HomeContainer() {
-  const { data: session } = useSession();
-
-  const value = useAppSelector(selectHomeValue);
-  const dispatch = useAppDispatch();
-
-  function onIncrease() {
-    dispatch(increment());
-  }
-
-  function onDecrease() {
-    dispatch(decrement());
-  }
-
   return (
-    <Layout session={session}>
+    <Layout>
       <FullWidthStrip bgColor={FullWidthStripBackgroundColorEnums.PRIMARY}>
-        <div className="flex flex-col items-center justify-center py-12">
-          <p className="text text-center">
-            <span className="text-xl text-white">Title</span>
-            <br />
-            <span className="text-white">Sub Title</span>
-          </p>
-        </div>
+        <Box className="flex flex-col items-center justify-center py-32">
+          <Stack
+            spacing={3}
+            className="text flex flex-col text-center font-bold text-white"
+          >
+            <Typography variant="h3">Title</Typography>
+            <Typography variant="h6">Sub Title</Typography>
+          </Stack>
+        </Box>
       </FullWidthStrip>
       <Strip>
-        <div className="flex flex-col space-y-2 py-32">
-          <div>Count : {value}</div>
-          <div className="flex space-x-2">
-            <button
-              onClick={onIncrease}
-              className="rounded border px-4 py-2 transition-colors hover:bg-gray-300"
-            >
-              Increase
-            </button>
-            <button
-              onClick={onDecrease}
-              className="rounded border px-4 py-2 transition-colors hover:bg-gray-300"
-            >
-              Decrease
-            </button>
-          </div>
-        </div>
+        <Box className="flex h-[calc(100vh-200px)] items-center justify-center">
+          <Link href={{ pathname: '/movies' }} passHref>
+            <Button size="large" variant="contained" className="font-bold">
+              Go to /movies
+            </Button>
+          </Link>
+        </Box>
       </Strip>
       <FullWidthStrip bgColor={FullWidthStripBackgroundColorEnums.BLACK}>
-        <div className="h-[300px]"></div>
+        <Link href={{ pathname: '/movies' }} passHref>
+          <Box className="flex cursor-pointer items-center justify-center py-32">
+            <Typography className="text-2xl font-bold text-white">
+              Sign up and get your favorite movies!
+            </Typography>
+          </Box>
+        </Link>
       </FullWidthStrip>
     </Layout>
   );

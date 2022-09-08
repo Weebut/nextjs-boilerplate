@@ -24,7 +24,7 @@ export function FileUploadContainer() {
               formData.append('file', file);
 
               axios
-                .post('/api/file-upload', formData)
+                .post('/api/file-upload-s3', formData)
                 .then(() => {
                   alert('Uploaded');
                 })

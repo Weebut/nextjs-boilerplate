@@ -22,10 +22,19 @@ export function HomeContainer() {
         </Box>
       </FullWidthStrip>
       <Strip>
-        <Box className="flex h-[calc(100vh-200px)] items-center justify-center">
+        <Box className="items-center justify-center py-12">
           <Link href={{ pathname: '/movies' }} passHref>
             <Button size="large" variant="contained" className="font-bold">
               Go to /movies
+            </Button>
+          </Link>
+        </Box>
+      </Strip>
+      <Strip>
+        <Box className="items-center justify-center py-12">
+          <Link href={{ pathname: '/file-upload' }} passHref>
+            <Button size="large" variant="contained" className="font-bold">
+              Go to /file-upload
             </Button>
           </Link>
         </Box>

@@ -54,3 +54,6 @@ build.css
 *.log
 
 .firebaserc
+
+public/uploads/*
+!public/uploads/.gitkeep

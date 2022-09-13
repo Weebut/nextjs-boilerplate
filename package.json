@@ -8,11 +8,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "npm run clean && next build",
-    "build:tailwind": "npx tailwindcss -o build.css --minify",
     "start": "next start",
     "clean": "rm -rf .next",
     "lint": "next lint",
-    "prod": "npm install && npm run build && npm run build:tailwind && npm run start"
+    "prod": "npm install && npm run build && npm run start"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.165.0",

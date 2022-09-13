@@ -42,12 +42,19 @@ export function MoviesContainer() {
   return (
     <Layout showFooter={false}>
       <Strip>
-        <Box className="py-32">
-          <Typography className="text-4xl font-bold">
+        <Box py={32}>
+          <Typography fontWeight="bold" variant="h4">
             Movies Now Playing
           </Typography>
           {/* Infinite scroll */}
-          <Box className="flex flex-wrap gap-4 py-12">
+          <Box
+            display="flex"
+            sx={{
+              flexWrap: 'wrap',
+              gap: 4,
+              py: 12,
+            }}
+          >
             {getMovies().map((movie, idx) => (
               <MovieCard
                 key={idx}
@@ -58,7 +65,7 @@ export function MoviesContainer() {
             ))}
             <Box
               id={infiniteScrollTarget}
-              className="h-32"
+              height={128}
               hidden={!moviesResult?.hasNext}
             />
           </Box>

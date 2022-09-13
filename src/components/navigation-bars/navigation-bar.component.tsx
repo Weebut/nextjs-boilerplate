@@ -1,6 +1,6 @@
 import { useFirebaseUser } from '@hooks/firebase-user';
 import { signOut } from '@libs/utils/auth/sign-out';
-import { AppBar, Box, Button, Link, Toolbar } from '@mui/material';
+import { AppBar, Box, Button, Link, Stack, Toolbar } from '@mui/material';
 import NextLink from 'next/link';
 
 export function NavigationBar() {
@@ -10,30 +10,40 @@ export function NavigationBar() {
 
   return (
     <AppBar position="static" color="primary">
-      <Box className="px-6">
+      <Box px={6}>
         <Toolbar disableGutters>
           <NextLink href="/" passHref>
-            <Link className="font-bold text-white">LOGO</Link>
+            <Link fontWeight="bold" color="#fff">
+              LOGO
+            </Link>
           </NextLink>
 
           <Box sx={{ flexGrow: 1 }} />
 
           <Box sx={{ flexGrow: 0 }}>
             {isLoggedIn ? (
-              <Box className="flex items-center space-x-4">
+              <Stack spacing={6} direction="row" alignItems="center">
                 <NextLink href="/my-page" passHref>
-                  <Link className="font-bold text-white">{user.email}</Link>
+                  <Link fontWeight="bold" color="#fff" overflow="hidden">
+                    My Page
+                  </Link>
                 </NextLink>
+
                 <Button
                   onClick={() => signOut()}
-                  className="rounded py-2 px-4 font-bold text-white"
+                  sx={{
+                    py: '0.25rem',
+                    px: '0.5rem',
+                    fontWeight: 'bold',
+                    color: '#fff',
+                  }}
                 >
                   SIGN OUT
                 </Button>
-              </Box>
+              </Stack>
             ) : (
               <NextLink href="/sign-in" passHref>
-                <Link className="rounded py-2 px-4 font-bold text-white">
+                <Link px={4} fontWeight="bold" color="#fff">
                   SIGN IN
                 </Link>
               </NextLink>

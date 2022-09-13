@@ -62,26 +62,39 @@ export function MyPageContainer() {
   return (
     <SideBarLayout groups={groups}>
       <Strip>
-        <Box className="flex h-full w-full flex-col py-12">
-          <Box>
-            <Typography className="text-2xl">안녕하세요,</Typography>
-            <Typography className="text-2xl font-bold">
-              {user?.email} 님
+        <Box
+          display="flex"
+          height="100%"
+          width="100%"
+          flexDirection="column"
+          py={12}
+        >
+          <Box width="100%">
+            <Typography variant="h5">안녕하세요,</Typography>
+            <Typography
+              variant="h5"
+              width="100%"
+              fontWeight="bold"
+              textOverflow="ellipsis"
+              overflow="hidden"
+              whiteSpace={'nowrap'}
+            >
+              {user?.email.split('@')[0]} 님
             </Typography>
           </Box>
         </Box>
       </Strip>
       <Strip>
-        <Stack spacing={4} className="flex w-full flex-col">
-          <Stack spacing={2} className="flex flex-col">
-            <Typography className="text-xl font-bold">
+        <Stack spacing={4} display="flex" width="100%" flexDirection="column">
+          <Stack spacing={2} display="flex" flexDirection="column">
+            <Typography variant="h6" fontWeight="bold">
               대기 중인 포스트
             </Typography>
-            <Typography className="text-sm">
+            <Typography variant="h6">
               포스트 심사 결과는 매주 수요일 발표됩니다
             </Typography>
           </Stack>
-          <Box className="flex flex-wrap">
+          <Box display="flex" flexWrap="wrap">
             {cards.map((card, index) => (
               <PostCard key={index} card={card} />
             ))}

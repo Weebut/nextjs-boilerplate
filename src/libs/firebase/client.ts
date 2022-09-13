@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
+import { production } from '@libs/constants/node';
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { connectAuthEmulator, getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -18,3 +19,9 @@ const firebaseApp = initializeApp(
 );
 export const firebaseAuth = getAuth(firebaseApp);
 firebaseAuth.languageCode = 'kr';
+
+if (process.env.NODE_ENV === production) {
+  // const firebaseAnalytics = getAnalytics(firebaseApp);
+} else {
+  connectAuthEmulator(firebaseAuth, 'http://localhost:9099');
+}

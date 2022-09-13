@@ -13,7 +13,7 @@ export function Layout({ children, showFooter = true }: LayoutProps) {
     <Box flex="col" width="100%">
       <Box flex="col" minHeight="100vh" width="100%">
         <NavigationBar />
-        <Box flex="col" width="100$">
+        <Box flex="col" width="100%">
           {children}
         </Box>
       </Box>

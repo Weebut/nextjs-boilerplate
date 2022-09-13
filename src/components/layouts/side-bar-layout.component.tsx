@@ -1,5 +1,8 @@
 import { Footer } from '@components/footers/footer.component';
-import { NavigationBar } from '@components/navigation-bars/navigation-bar.component';
+import {
+  NavigationBar,
+  navigationBarHeight,
+} from '@components/navigation-bars/navigation-bar.component';
 import { Group, SideBar } from '@components/side-bars/side-bar.component';
 import { Box } from '@mui/material';
 
@@ -32,6 +35,10 @@ export function SideBarLayout({
           flexDirection={{ xs: 'column', md: 'row' }}
           width="100%"
           py={{ xs: 8, md: 4 }}
+          sx={{
+            position: 'absolute',
+            top: navigationBarHeight,
+          }}
         >
           <SideBar groups={groups} />
           <Box

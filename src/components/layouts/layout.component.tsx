@@ -10,10 +10,12 @@ interface LayoutProps {
 
 export function Layout({ children, showFooter = true }: LayoutProps) {
   return (
-    <Box className="flex w-full flex-col">
-      <Box className="flex min-h-screen w-full flex-col">
+    <Box flex="col" width="100%">
+      <Box flex="col" minHeight="100vh" width="100%">
         <NavigationBar />
-        <Box className="flex w-full flex-col">{children}</Box>
+        <Box flex="col" width="100$">
+          {children}
+        </Box>
       </Box>
       {showFooter && <Footer />}
     </Box>

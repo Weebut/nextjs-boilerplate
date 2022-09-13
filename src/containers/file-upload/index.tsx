@@ -1,6 +1,6 @@
 import { Layout } from '@components/layouts/layout.component';
 import { Strip } from '@components/strips/strip.component';
-import { Box, Button } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import axios from 'axios';
 import { BaseSyntheticEvent } from 'react';
 
@@ -8,8 +8,8 @@ export function FileUploadContainer() {
   return (
     <Layout>
       <Strip>
-        <Box className="flex flex-col items-center justify-center py-32">
-          File upload
+        <Box flex="col" alignItems="center" justifyContent="center" py={32}>
+          <Typography>File upload</Typography>
           <form
             onSubmit={(event: BaseSyntheticEvent) => {
               event.preventDefault();

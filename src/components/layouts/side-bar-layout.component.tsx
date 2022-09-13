@@ -17,12 +17,30 @@ export function SideBarLayout({
   showFooter = false,
 }: SideBarLayoutProps) {
   return (
-    <Box className="flex w-screen flex-col">
-      <Box className="flex h-auto min-h-screen w-full flex-col bg-gray-100">
+    <Box flex="col" width="100vw">
+      <Box
+        flex="col"
+        minHeight="100vh"
+        width="100%"
+        sx={{
+          backgroundColor: '#F5F5F5',
+        }}
+      >
         <NavigationBar />
-        <Box className="flex h-auto w-full flex-col py-8 md:flex-row md:py-4">
+        <Box
+          display="flex"
+          flexDirection={{ xs: 'column', md: 'row' }}
+          width="100%"
+          py={{ xs: 8, md: 4 }}
+        >
           <SideBar groups={groups} />
-          <Box className="flex h-full flex-col items-start justify-start">
+          <Box
+            flex="col"
+            height="100%"
+            width="100%"
+            alignItems="start"
+            justifyContent="start"
+          >
             {children}
           </Box>
         </Box>

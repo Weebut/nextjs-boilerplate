@@ -1,6 +1,5 @@
 import { PostCard } from '@components/cards/post-card.component';
-import { SideBarLayout } from '@components/layouts/side-bar-layout.component';
-import { Group } from '@components/side-bars/side-bar.component';
+import { Layout } from '@components/layouts/layout.component';
 import { Strip } from '@components/strips/strip.component';
 import { useFirebaseUser } from '@hooks/firebase-user';
 import { Box, Stack, Typography } from '@mui/material';
@@ -34,33 +33,10 @@ export function MyPageContainer() {
     },
   ];
 
-  const groups: Group[] = [
-    {
-      icon: '🔥',
-      name: '인기 카테고리',
-      tabs: [
-        { name: '웹 개발' },
-        { name: 'React' },
-        { name: 'Python' },
-        { name: 'Android' },
-      ],
-    },
-    {
-      icon: '🧑‍💻',
-      name: '개발',
-      tabs: [
-        { name: '일반 개발' },
-        { name: 'Javascript' },
-        { name: 'React' },
-        { name: 'Vue.js' },
-      ],
-    },
-  ];
-
   const { user } = useFirebaseUser();
 
   return (
-    <SideBarLayout groups={groups}>
+    <Layout pt={40} pb={60}>
       <Strip>
         <Box
           display="flex"
@@ -69,11 +45,10 @@ export function MyPageContainer() {
           flexDirection="column"
           py={12}
         >
-          <Box width="100%">
-            <Typography variant="h5">안녕하세요,</Typography>
+          <Box width="100%" display="flex" flexWrap="wrap">
+            <Typography variant="h5">안녕하세요,&nbsp;</Typography>
             <Typography
               variant="h5"
-              width="100%"
               fontWeight="bold"
               textOverflow="ellipsis"
               overflow="hidden"
@@ -94,13 +69,13 @@ export function MyPageContainer() {
               포스트 심사 결과는 매주 수요일 발표됩니다
             </Typography>
           </Stack>
-          <Box display="flex" flexWrap="wrap">
+          <Box display="flex" flexWrap="wrap" gap={6}>
             {cards.map((card, index) => (
               <PostCard key={index} card={card} />
             ))}
           </Box>
         </Stack>
       </Strip>
-    </SideBarLayout>
+    </Layout>
   );
 }

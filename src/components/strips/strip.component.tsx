@@ -11,8 +11,9 @@ export function Strip({ children }: StripProps) {
       maxWidth="lg"
       sx={{
         width: '100%',
-        px: 6,
+        px: 5,
       }}
+      disableGutters
     >
       {children}
     </Container>

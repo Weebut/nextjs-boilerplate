@@ -3,7 +3,6 @@ import { Layout } from '@components/layouts/layout.component';
 import { Strip } from '@components/strips/strip.component';
 import { useIntersectionObserver } from '@hooks/intersection-observer';
 import { useMoviesInfinite } from '@hooks/use-movies-infinte';
-import { useWarnBeforeClosing } from '@hooks/warn-before-closing';
 import { Box, Typography } from '@mui/material';
 import { useEffect } from 'react';
 
@@ -25,8 +24,6 @@ export function MoviesContainer() {
     target: infiniteScrollTarget,
   });
 
-  useWarnBeforeClosing({ isClosable: false });
-
   function getMovies() {
     if (moviesResult) {
       const movies: any[] = [];
@@ -40,9 +37,9 @@ export function MoviesContainer() {
   }
 
   return (
-    <Layout showFooter={false}>
+    <Layout showFooter={false} pt={80} pb={80}>
       <Strip>
-        <Box py={32}>
+        <Box>
           <Typography fontWeight="bold" variant="h4">
             Movies Now Playing
           </Typography>

@@ -1,12 +1,15 @@
 import { Layout } from '@components/layouts/layout.component';
 import { Strip } from '@components/strips/strip.component';
+import { useWarnBeforeClosing } from '@hooks/warn-before-closing';
 import { Box, Button, Typography } from '@mui/material';
 import axios from 'axios';
 import { BaseSyntheticEvent } from 'react';
 
 export function FileUploadContainer() {
+  useWarnBeforeClosing({ isClosable: false });
+
   return (
-    <Layout>
+    <Layout pt={40} pb={60}>
       <Strip>
         <Box flex="col" alignItems="center" justifyContent="center" py={32}>
           <Typography>File upload</Typography>

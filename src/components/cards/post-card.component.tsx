@@ -21,8 +21,6 @@ export function PostCard({ card }: PostCardProps) {
   return (
     <Stack
       spacing={6}
-      mr={6}
-      mb={6}
       height={200}
       width={300}
       borderRadius="10px"

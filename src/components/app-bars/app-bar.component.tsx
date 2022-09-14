@@ -2,7 +2,7 @@ import Link from '@components/link.component';
 import { useFirebaseUser } from '@hooks/firebase-user';
 import { signOut } from '@libs/utils/auth/sign-out';
 import {
-  AppBar,
+  AppBar as MaterialAppBar,
   Box,
   Button,
   Container,
@@ -12,15 +12,17 @@ import {
 
 export const navigationBarHeight = 64;
 
-export function NavigationBar() {
+export function AppBar() {
   const { user } = useFirebaseUser();
 
   const isLoggedIn = !!user;
 
   return (
-    <AppBar color="primary" position="fixed" elevation={0}>
+    <MaterialAppBar variant="outlined" color="inherit" elevation={0}>
       <Container
         sx={{
+          top: 0,
+          color: 'black',
           height: navigationBarHeight,
           width: '100%',
           display: 'flex',
@@ -45,7 +47,6 @@ export function NavigationBar() {
           <Link
             href="/"
             sx={{
-              color: 'white',
               opacity: 1,
               fontWeight: 'bold',
             }}
@@ -59,7 +60,6 @@ export function NavigationBar() {
               <Typography
                 sx={{
                   fontWeight: 'bold',
-                  color: 'white',
                 }}
               >
                 My Page
@@ -69,7 +69,6 @@ export function NavigationBar() {
               <Typography
                 sx={{
                   fontWeight: 'bold',
-                  color: 'white',
                 }}
               >
                 Movies
@@ -79,7 +78,6 @@ export function NavigationBar() {
               <Typography
                 sx={{
                   fontWeight: 'bold',
-                  color: 'white',
                 }}
               >
                 File Upload
@@ -111,7 +109,6 @@ export function NavigationBar() {
               <Typography
                 sx={{
                   fontWeight: 'bold',
-                  color: 'white',
                 }}
               >
                 SIGN IN
@@ -120,6 +117,6 @@ export function NavigationBar() {
           )}
         </Box>
       </Container>
-    </AppBar>
+    </MaterialAppBar>
   );
 }

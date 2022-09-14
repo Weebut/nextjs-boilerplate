@@ -1,8 +1,8 @@
 import { Footer } from '@components/footers/footer.component';
 import {
-  NavigationBar,
+  AppBar,
   navigationBarHeight,
-} from '@components/navigation-bars/navigation-bar.component';
+} from '@components/app-bars/app-bar.component';
 import { Box } from '@mui/material';
 import { ReactNode } from 'react';
 
@@ -22,7 +22,7 @@ export function Layout({
   return (
     <Box id="layout" flex="col" width="100%">
       <Box id="main" flex="col" minHeight="100vh" width="100%">
-        <NavigationBar />
+        <AppBar />
         <Box
           width="100%"
           flex="col"

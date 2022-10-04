@@ -1,4 +1,4 @@
-import { firebaseAuth } from '@libs/firebase/server';
+import { firebaseAuthServer } from '@libs/firebase/server';
 import { withSessionRoute } from '@libs/iron-session/iron-session';
 import { NextApiRequest, NextApiResponse } from 'next';
 
@@ -15,7 +15,7 @@ export default withSessionRoute(
       throw new Error('no valid idToken');
     }
 
-    await firebaseAuth.verifyIdToken(idToken);
+    await firebaseAuthServer.verifyIdToken(idToken);
     req.session.idToken = idToken;
     await req.session.save();
     res.status(201).end();

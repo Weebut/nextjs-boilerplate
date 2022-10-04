@@ -1,4 +1,4 @@
-import { production } from '@libs/constants/node';
+import { isProduction } from '@libs/utils/environment';
 import { withIronSessionApiRoute, withIronSessionSsr } from 'iron-session/next';
 import {
   GetServerSidePropsContext,
@@ -16,7 +16,7 @@ const sessionOptions = {
   cookieName: 'iron-session-cookie',
   ttl,
   cookieOptions: {
-    secure: process.env.NODE_ENV === production,
+    secure: isProduction(),
   },
 };
 

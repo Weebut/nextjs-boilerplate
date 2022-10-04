@@ -5,7 +5,7 @@ const theme = createTheme({
   spacing: 4,
   typography: {
     fontFamily: [
-      'Pretendard',
+      '"Noto Sans KR"',
       '-apple-system',
       'BlinkMacSystemFont',
       '"Segoe UI"',

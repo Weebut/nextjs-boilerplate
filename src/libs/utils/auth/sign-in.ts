@@ -1,4 +1,4 @@
-import { firebaseAuth } from '@libs/firebase/client';
+import { firebaseAuthClient } from '@libs/firebase/client';
 import axios from 'axios';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { signOut } from './sign-out';
@@ -7,7 +7,7 @@ export async function signIn(email: string, password: string) {
   await signOut();
 
   const credential = await signInWithEmailAndPassword(
-    firebaseAuth,
+    firebaseAuthClient,
     email,
     password,
   );

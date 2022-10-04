@@ -1,10 +1,10 @@
-import { firebaseAuth } from '@libs/firebase/client';
+import { firebaseAuthClient } from '@libs/firebase/client';
 import { GithubAuthProvider, signInWithPopup } from 'firebase/auth';
 
 export async function signInWithGithub() {
   const provider = new GithubAuthProvider();
   try {
-    await signInWithPopup(firebaseAuth, provider);
+    await signInWithPopup(firebaseAuthClient, provider);
   } catch (error: any) {
     if (error.code === 'auth/account-exists-with-different-credential') {
       alert(

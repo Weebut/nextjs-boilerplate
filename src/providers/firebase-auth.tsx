@@ -1,5 +1,5 @@
 import { FirebaseUser } from '@custom-types/firebase-user';
-import { firebaseAuth } from '@libs/firebase/client';
+import { firebaseAuthClient } from '@libs/firebase/client';
 import { actions } from '@ducks/reducers/firebase-auth';
 import { ReactNode, useEffect } from 'react';
 import { useAppDispatch } from '@ducks/hooks';
@@ -14,7 +14,7 @@ export function FirebaseAuthProvider({
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    firebaseAuth.onAuthStateChanged(async (user) => {
+    firebaseAuthClient.onAuthStateChanged(async (user) => {
       if (user) {
         const idToken = await user.getIdToken();
 

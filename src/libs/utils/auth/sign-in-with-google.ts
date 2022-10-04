@@ -1,11 +1,11 @@
-import { firebaseAuth } from '@libs/firebase/client';
+import { firebaseAuthClient } from '@libs/firebase/client';
 import { GoogleAuthProvider, signInWithRedirect } from 'firebase/auth';
 
 export async function signInWithGoogle() {
   const provider = new GoogleAuthProvider();
 
   try {
-    await signInWithRedirect(firebaseAuth, provider);
+    await signInWithRedirect(firebaseAuthClient, provider);
   } catch (error: any) {
     if (error.code === 'auth/account-exists-with-different-credential') {
       alert(

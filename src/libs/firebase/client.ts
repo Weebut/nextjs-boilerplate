@@ -18,15 +18,13 @@ const firebaseConfig = isProduction()
     };
 
 // Initialize Firebase
-const firebaseAppClient = initializeApp(
-  firebaseConfig,
-  'nextjs-boilerplate-firebase',
-);
-export const firebaseAuth = getAuth(firebaseAppClient);
-firebaseAuth.languageCode = 'kr';
+const app = initializeApp(firebaseConfig, 'nextjs-boilerplate-firebase');
+
+export const firebaseAuthClient = getAuth(app);
+firebaseAuthClient.languageCode = 'kr';
 
 if (isProduction()) {
   // const firebaseAnalytics = getAnalytics(firebaseApp);
 } else {
-  connectAuthEmulator(firebaseAuth, 'http://localhost:9099');
+  connectAuthEmulator(firebaseAuthClient, 'http://localhost:9099');
 }

@@ -3,7 +3,7 @@ import SignInForm from '@components/blocks/forms/sign-in';
 import Strip from '@components/blocks/strips/default';
 import MainTemplate from '@components/blocks/templates/default';
 import { useFirebaseUser } from '@hooks/firebase-user';
-import { firebaseAuth } from '@libs/firebase/client';
+import { firebaseAuthClient } from '@libs/firebase/client';
 import { signInWithGoogle } from '@libs/utils/auth/sign-in-with-google';
 import {
   Box,
@@ -29,7 +29,7 @@ export default function SignIn({ redirectTo }: SignInProps) {
   const [checkingRedirect, setCheckingRedirect] = useState(true);
 
   useEffect(() => {
-    getRedirectResult(firebaseAuth)
+    getRedirectResult(firebaseAuthClient)
       .then((result) => {
         if (result?.user && result.operationType === OperationType.SIGN_IN) {
           router.push(redirectTo || pathHome);

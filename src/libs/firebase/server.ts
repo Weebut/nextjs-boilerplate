@@ -1,4 +1,3 @@
-import { production } from '@libs/constants/node';
 import { config } from 'dotenv';
 import { credential } from 'firebase-admin';
 import { getApp, initializeApp } from 'firebase-admin/app';
@@ -11,9 +10,12 @@ export function getFirebaseApp() {
     const found = getApp();
     return found;
   } catch (err) {
-    if (process.env.NODE_ENV === production) {
+    if (process.env.NODE_ENV === 'production') {
       const serviceAccount = JSON.parse(
-        process.env.FIREBASE_SERVICE_ACCOUNT_KEY as string,
+        (process.env.FIREBASE_SERVICE_ACCOUNT_KEY as string).replaceAll(
+          "'",
+          '"',
+        ),
       );
       return initializeApp({
         credential: credential.cert(serviceAccount),
@@ -27,4 +29,4 @@ export function getFirebaseApp() {
 
 const app = getFirebaseApp();
 
-export const firebaseAuth = getAuth(app);
+export const firebaseAuthServer = getAuth(app);

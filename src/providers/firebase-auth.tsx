@@ -1,8 +1,8 @@
 import { FirebaseUser } from '@custom-types/firebase-user';
 import { firebaseAuth } from '@libs/firebase/client';
-import { useAppDispatch } from '@redux/hooks';
-import { flushUser, saveUser } from '@redux/slices/firebase-auth.slice';
+import { actions } from '@ducks/reducers/firebase-auth';
 import { ReactNode, useEffect } from 'react';
+import { useAppDispatch } from '@ducks/hooks';
 
 interface FirebaseAuthProviderProps {
   children: ReactNode;
@@ -35,11 +35,11 @@ export function FirebaseAuthProvider({
           isAnonymous: user.isAnonymous,
         };
 
-        dispatch(saveUser(payload));
+        dispatch(actions.setUser(payload));
       } else {
         await fetch('/api/auth/sign-out', { method: 'POST' });
 
-        dispatch(flushUser());
+        dispatch(actions.flushUser());
       }
     });
   }, [dispatch]);

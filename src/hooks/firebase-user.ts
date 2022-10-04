@@ -1,9 +1,9 @@
 import { FirebaseUser } from '@custom-types/firebase-user';
-import { useAppSelector } from '@redux/hooks';
+import { useAppSelector } from '@ducks/hooks';
 import {
   selectFirebaseUser,
   selectIsFirebaseUserPending,
-} from '@redux/selectors/firebase-auth.selector';
+} from '@ducks/selectors/firebase-auth.selector';
 
 interface useFirebaseUserResponse {
   user?: FirebaseUser;

@@ -1,4 +1,4 @@
-import ResetPasswordContainer from '@containers/reset-password';
+import ResetPassword from '@components/pages/reset-password';
 import { Box } from '@mui/material';
 import Head from 'next/head';
 
@@ -8,7 +8,7 @@ export default function ResetPasswordPage() {
       <Head>
         <title>비밀번호 재설정 | iN!T</title>
       </Head>
-      <ResetPasswordContainer />
+      <ResetPassword />
     </Box>
   );
 }

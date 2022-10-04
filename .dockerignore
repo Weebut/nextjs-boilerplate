@@ -1,0 +1,11 @@
+firebase
+**/*.md
+**/docker*
+**/Dockerfile*
+node_modules/developers
+node_modules/mentors
+node_modules/biz
+node_modules/ui
+node_modules/tsconfig
+node_modules/eslint-config-custom
+node_modules/mentors

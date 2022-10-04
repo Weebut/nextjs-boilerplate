@@ -1,0 +1,32 @@
+version: '3.8'
+
+volumes:
+  nginxdata:
+    driver: local
+
+services:
+  nginx-front:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+      args:
+        - NGINX_VERSION=${NGINX_VERSION:-1.19}
+    image: ${ECR_REGISTRY}/${ECR_WEB_NGINX_REPOSITORY}:${NGINX_VERSION:-1.19}-${ENV:-dev}-${TAG:-latest}
+    ports:
+      - 80:80
+    env_file:
+      - ./nginx/.env
+    depends_on:
+      - web
+  web:
+    build:
+      context: .
+      dockerfile: ./apps/web/Dockerfile
+      args:
+        - NODE_VERSION=${NODE_VERSION:-16.14.2}
+    image: ${ECR_REGISTRY}/${ECR_WEB_DEVELOPER_REPOSITORY}:${NODE_VERSION:-16.14.2}-${ENV:-dev}-${TAG:-latest}
+    restart: always
+    env_file:
+      - ./apps/web/.env
+    ports:
+      - 3000:3000

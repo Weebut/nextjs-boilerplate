@@ -10,7 +10,7 @@
     "build": "next build",
     "start": "next start",
     "clean": "rm -rf .next",
-    "lint": "next lint"
+    "lint": "TIMING=1 next lint"
   },
   "dependencies": {
     "@aws-sdk/abort-controller": "^3.183.0",
@@ -25,6 +25,7 @@
     "@reduxjs/toolkit": "^1.8.1",
     "axios": "^0.27.2",
     "dotenv": "^16.0.1",
+    "eslint-config-custom": "^0.0.0",
     "firebase": "^9.9.3",
     "firebase-admin": "^11.0.1",
     "iron-session": "^6.1.3",

@@ -32,59 +32,16 @@ export default function AppBar() {
         }}
         disableGutters
       >
-        {/* Logo and Menu */}
-        <Stack
-          spacing={6}
-          direction="row"
+        {/* Logo */}
+        <Link
+          href="/"
           sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'start',
-            flexGrow: 1,
+            opacity: 1,
+            fontWeight: 'bold',
           }}
         >
-          {/* Logo */}
-          <Link
-            href="/"
-            sx={{
-              opacity: 1,
-              fontWeight: 'bold',
-            }}
-          >
-            LOGO
-          </Link>
-
-          {/* Menu */}
-          <Stack spacing={3} direction="row" color="white">
-            <Link href="/my-page">
-              <Typography
-                sx={{
-                  fontWeight: 'bold',
-                }}
-              >
-                My Page
-              </Typography>
-            </Link>
-            <Link href="/movies">
-              <Typography
-                sx={{
-                  fontWeight: 'bold',
-                }}
-              >
-                Movies
-              </Typography>
-            </Link>
-            <Link href="/file-upload">
-              <Typography
-                sx={{
-                  fontWeight: 'bold',
-                }}
-              >
-                File Upload
-              </Typography>
-            </Link>
-          </Stack>
-        </Stack>
+          LOGO
+        </Link>
 
         <Box sx={{ flexGrow: 1 }} />
 

@@ -1,8 +1,8 @@
-import { Link } from '@components/atoms/link';
 import SignUpForm from '@components/blocks/forms/sign-up';
 import Strip from '@components/blocks/strips/default';
 import MainTemplate from '@components/blocks/templates/default';
 import { Box, Stack, Typography } from '@mui/material';
+import { Link } from 'shared-components';
 
 export default function SignUp() {
   return (

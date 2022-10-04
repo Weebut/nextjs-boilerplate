@@ -1,8 +1,8 @@
-import { Link } from '@components/atoms/link';
 import { useFirebaseUser } from '@hooks/firebase-user';
 import { LayoutConfig } from '@libs/config';
 import { MaxWidth } from '@libs/material-ui/types';
 import { AppBar as MaterialAppBar, Box, Container } from '@mui/material';
+import { Link } from 'shared-components';
 
 const appBarHeight = LayoutConfig.appBar.height;
 const defaultMaxWidth = LayoutConfig.maxWidth as MaxWidth;

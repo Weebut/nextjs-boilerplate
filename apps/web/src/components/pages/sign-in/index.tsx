@@ -1,4 +1,3 @@
-import { Link } from '@components/atoms/link';
 import SignInForm from '@components/blocks/forms/sign-in';
 import Strip from '@components/blocks/strips/default';
 import MainTemplate from '@components/blocks/templates/default';
@@ -15,6 +14,7 @@ import {
 import { getRedirectResult, OperationType } from 'firebase/auth';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { Link } from 'shared-components';
 
 const pathHome = '/';
 

@@ -16,7 +16,13 @@ import { getRedirectResult, OperationType } from 'firebase/auth';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
-export default function SignIn() {
+const pathHome = '/';
+
+interface SignInProps {
+  redirectTo?: string;
+}
+
+export default function SignIn({ redirectTo }: SignInProps) {
   const router = useRouter();
 
   const { isLoading } = useFirebaseUser();
@@ -26,19 +32,19 @@ export default function SignIn() {
     getRedirectResult(firebaseAuth)
       .then((result) => {
         if (result?.user && result.operationType === OperationType.SIGN_IN) {
-          router.push('/');
+          router.push(redirectTo || pathHome);
         }
       })
       .finally(() => {
         setCheckingRedirect(false);
       });
-  }, [router]);
+  }, [redirectTo, router]);
 
   if (isLoading || checkingRedirect) {
     return (
       <MainTemplate>
         <Box
-          height="calc(100vh - 60px)"
+          height="calc(100vh - 200px)"
           display="flex"
           alignItems="center"
           justifyContent="center"

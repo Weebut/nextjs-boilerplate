@@ -14,7 +14,7 @@ export function ClientSideAuthGuard({ children }: ClientSideAuthGuardProps) {
   const dispatch = useAppDispatch();
 
   const router = useRouter();
-  const { asPath: pathCurrent, query } = router;
+  const { asPath: pathCurrent } = router;
 
   const {
     user: firebaseUser,
@@ -30,20 +30,13 @@ export function ClientSideAuthGuard({ children }: ClientSideAuthGuardProps) {
       const url = stringifyUrl({
         url: pathSignIn,
         query: {
-          redirectTo: encodeURIComponent(query.redirectTo as string),
+          redirectTo: encodeURIComponent(pathCurrent),
         },
       });
 
       router.push(url);
     }
-  }, [
-    isUnauthenticated,
-    router,
-    pathCurrent,
-    dispatch,
-    isFirebaseLoading,
-    query.redirectTo,
-  ]);
+  }, [isUnauthenticated, router, pathCurrent, dispatch, isFirebaseLoading]);
 
   return <>{children}</>;
 }

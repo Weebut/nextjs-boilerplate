@@ -11,7 +11,11 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
-import { getRedirectResult, OperationType } from 'firebase/auth';
+import {
+  getRedirectResult,
+  OperationType,
+  UserCredential,
+} from 'firebase/auth';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Link } from 'shared-components';
@@ -26,21 +30,31 @@ export default function SignIn({ redirectTo }: SignInProps) {
   const router = useRouter();
 
   const { isLoading } = useFirebaseUser();
-  const [checkingRedirect, setCheckingRedirect] = useState(true);
+  const [isChecking, setIsChecking] = useState(true);
 
   useEffect(() => {
-    getRedirectResult(firebaseAuthClient)
-      .then((result) => {
-        if (result?.user && result.operationType === OperationType.SIGN_IN) {
-          router.push(redirectTo || pathHome);
-        }
-      })
-      .finally(() => {
-        setCheckingRedirect(false);
-      });
+    async function handleSuccess(result: UserCredential | null) {
+      const isSuccess = !!result?.user;
+      const isSignInOperation = result?.operationType === OperationType.SIGN_IN;
+
+      if (isSuccess && isSignInOperation) {
+        await router.push(redirectTo || pathHome);
+      }
+    }
+
+    async function checkReirectResult() {
+      try {
+        const result = await getRedirectResult(firebaseAuthClient);
+        await handleSuccess(result);
+      } finally {
+        setIsChecking(false);
+      }
+    }
+
+    checkReirectResult();
   }, [redirectTo, router]);
 
-  if (isLoading || checkingRedirect) {
+  if (isLoading || isChecking) {
     return (
       <MainTemplate>
         <Box

@@ -7,24 +7,22 @@ import { Box, Button, Typography } from '@mui/material';
 export default function MyPage() {
   const { user } = useFirebaseUser();
 
+  const name = user?.email.split('@')[0];
+
   return (
     <MainTemplate>
       <Strip>
-        <Box
-          display="flex"
-          flexDirection="column"
-          height="100%"
-          width="100%"
-          py={12}
-        >
+        <Box display="flex" flexDirection="column" height="100%" width="100%">
           <Box>
-            <Typography variant="h5">안녕하세요,</Typography>
             <Typography variant="h5" fontWeight="bold">
-              {user?.email} 님
+              {name} 님,
             </Typography>
-            <Button onClick={signOut}>로그아웃</Button>
+            <Typography variant="h5">안녕하세요</Typography>
           </Box>
         </Box>
+      </Strip>
+      <Strip pt={6}>
+        <Button onClick={signOut}>로그아웃</Button>
       </Strip>
     </MainTemplate>
   );

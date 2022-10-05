@@ -1,0 +1,10 @@
+firebase
+**/*.md
+**/docker*
+**/Dockerfile*
+node_modules/web
+node_modules/admin
+node_modules/shared-components
+node_modules/shared-libs
+node_modules/tsconfig
+node_modules/eslint-config-custom

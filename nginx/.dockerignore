@@ -1,0 +1,5 @@
+**/.env*
+firebase
+**/*.md
+**/docker*
+**/Dockerfile*

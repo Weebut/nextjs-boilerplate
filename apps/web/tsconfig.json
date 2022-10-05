@@ -1,0 +1,23 @@
+{
+  "exclude": ["node_modules"],
+  "extends": "tsconfig/nextjs.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@public/*": ["public/*"],
+      "@components/*": ["src/components/*"],
+      "@containers/*": ["src/components/containers/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@libs/*": ["src/libs/*"],
+      "@providers/*": ["src/providers/*"],
+      "@api/*": ["src/pages/api/*"],
+      "@ducks/*": ["src/ducks/*"],
+      "@styles/*": ["src/styles/*"],
+      "@templates/*": ["src/components/blocks/templates/*"],
+      "@custom-types/*": ["src/libs/types/*"]
+    }
+  },
+  "include": ["src", "next-env.d.ts"]
+}

@@ -1,0 +1,61 @@
+version: '3.8'
+
+volumes:
+  nginxdata:
+    driver: local
+  packagecachedata:
+    driver: local
+
+services:
+  firebase-emulator:
+    image: spine3/firebase-emulator
+    ports:
+      - 4000:4000
+      - 8080:8080
+      - 8085:8085
+      - 9099:9099
+      - 9199:9199
+    environment:
+      - GCP_PROJECT=${GCP_PROJECT}
+  nginx-front:
+    image: nginx:${NGINX_VERSION:-1.19}-alpine
+    ports:
+      - 80:80
+    env_file:
+      - ./nginx/.env.development
+    volumes:
+      - ./nginx/templates:/etc/nginx/templates
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - nginxdata:/var/cache/nginx/
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    depends_on:
+      - firebase-emulator
+      - web
+  web:
+    build:
+      context: .
+      dockerfile: ./apps/web/Dockerfile.dev
+      args:
+        - NODE_VERSION=${NODE_VERSION:-16.14.2}
+    restart: always
+    env_file:
+      - ./apps/web/.env.development
+    environment:
+      - FIREBASE_AUTH_EMULATOR_HOST=host.docker.internal:9099
+    ports:
+      - 3000:3000
+    volumes:
+      - ./apps/web/src:/app/apps/web/src
+      - ./apps/web/public:/app/apps/web/public
+      - ./apps/web/.next:/app/apps/web/.next
+      - ./apps/web/next-env.d.ts:/app/apps/web/next-env.d.ts
+      - ./apps/web/next.config.js:/app/apps/web/next.config.js
+      - ./apps/web/package.json:/app/apps/web/package.json
+      - ./apps/web/tsconfig.json:/app/apps/web/tsconfig.json
+      - ./packages:/app/packages
+      - ./package.json:/app/package.json
+      - ./yarn.lock:/app/yarn.lock
+      - ./turbo.json:/app/turbo.json
+    depends_on:
+      - firebase-emulator

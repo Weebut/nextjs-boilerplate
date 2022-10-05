@@ -16,7 +16,7 @@ export default function Template({
     <Box display="flex" flexDirection="column" width="100%">
       <Box display="flex" flexDirection="column" minHeight="100vh" width="100%">
         <AppBar />
-        <Container maxWidth="sm" disableGutters sx={{ px: 5 }}>
+        <Container maxWidth="sm" disableGutters>
           {children}
         </Container>
       </Box>

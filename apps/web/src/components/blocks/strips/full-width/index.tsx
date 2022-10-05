@@ -10,16 +10,23 @@ interface FullWidthStripProps {
   children?: ReactNode;
   maxWidth?: MaxWidth;
   bgProps?: any;
+  px?: number;
+  py?: number;
+  pt?: number;
+  pb?: number;
 }
 
 export default function FullWidthStrip({
   children,
   maxWidth = defaultMaxWidth,
   bgProps,
+  ...stripProps
 }: FullWidthStripProps) {
   return (
     <Box {...bgProps}>
-      <Strip maxWidth={maxWidth}>{children}</Strip>
+      <Strip maxWidth={maxWidth} {...stripProps}>
+        {children}
+      </Strip>
     </Box>
   );
 }
